@@ -113,4 +113,9 @@ export const defaultExtensions: Extensions = [
   Underline,
   Bold,
   Italic,
+  Markdown.configure({
+    html: false,
+    transformCopiedText: true,
+    transformPastedText: true,
+  }),
 ];

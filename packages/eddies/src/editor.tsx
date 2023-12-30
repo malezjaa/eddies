@@ -53,7 +53,7 @@ export type EditorProps = {
   /**
    * Handles the editor's value change.
    */
-  onChange?: (editor: TiptapEditor) => void | Promise<void>;
+  onChange?: (editor: EditorType) => void | Promise<void>;
 
   /**
    * Show character count.
@@ -66,6 +66,13 @@ export type EditorProps = {
   limit?: number;
 };
 
+export type EditorType = TiptapEditor & {
+  /**
+   * Returns the markdown representation of the editor's content.
+   */
+  getMarkdown: () => string;
+};
+
 export function Editor({
   initialValue,
   placeholder,
@@ -75,7 +82,7 @@ export function Editor({
   theme = "dark",
   showCharacterCount = false,
   limit = showCharacterCount ? 3000 : 0,
-  onChange = (editor: TiptapEditor) =>
+  onChange = (editor: EditorType) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) {
   const editor = useEditor({
@@ -96,7 +103,11 @@ export function Editor({
       }),
     ],
     onUpdate: (e) => {
-      onChange(e.editor as TiptapEditor);
+      //@ts-ignore
+      onChange({
+        ...e.editor,
+        getMarkdown: () => e.editor.storage.markdown.getMarkdown(),
+      });
     },
     editorProps: {
       ...editorProps,
@@ -107,12 +118,8 @@ export function Editor({
         ),
       },
     },
-    content: `
-    <p>This is a basic example of implementing images. Drag to re-order.</p>
-    <img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />
-    <img src="https://source.unsplash.com/K9QHL52rE2k/800x400" />
-  `, //initialValue
-  });
+    content: initialValue ?? "",
+  }) as EditorType;
 
   return (
     <div suppressContentEditableWarning suppressHydrationWarning>
