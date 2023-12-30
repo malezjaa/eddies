@@ -1,77 +1,13 @@
 "use client";
-
-import {
-  useEditor,
-  EditorContent,
-  Extensions,
-  Content,
-  Editor as TiptapEditor,
-} from "@tiptap/react";
+import { useEditor, EditorContent } from "@tiptap/react";
 import { defaultExtensions } from "./extensions";
-import { EditorProps as TiptapEditorProps } from "@tiptap/pm/view";
 import Placeholder from "@tiptap/extension-placeholder";
 import "./styles/index.css";
 import { cn } from "./utils";
 import CharacterCount from "@tiptap/extension-character-count";
-import BubbleMenu from "./bubble-menu/bubble-menu";
-
-export type EditorProps = {
-  /**
-   * The class name to use for the editor.
-   */
-  className?: string;
-
-  /**
-   * The initial value of the editor.
-   */
-  initialValue?: Content;
-
-  /**
-   * The placeholder text when the editor is empty.
-   */
-  placeholder?: string;
-
-  /**
-   * Array of extensions to use with the default provided by `eddies`.
-   */
-  extensions?: Extensions;
-
-  /**
-   * Editor props to pass to the editor.
-   */
-  editorProps?: TiptapEditorProps & {
-    attributes?: {
-      class?: string;
-    };
-  };
-
-  /**
-   * Defines the editor's theme.
-   */
-  theme?: "light" | "dark";
-
-  /**
-   * Handles the editor's value change.
-   */
-  onChange?: (editor: EditorType) => void | Promise<void>;
-
-  /**
-   * Show character count.
-   */
-  showCharacterCount?: boolean;
-
-  /**
-   * The limit of characters.
-   */
-  limit?: number;
-};
-
-export type EditorType = TiptapEditor & {
-  /**
-   * Returns the markdown representation of the editor's content.
-   */
-  getMarkdown: () => string;
-};
+import BubbleMenu, { bubbleMenuItems } from "./bubble-menu/bubble-menu";
+import BubbleButton from "./bubble-menu/bubble-button";
+import { EditorProps, EditorType } from "./types";
 
 export function Editor({
   initialValue,
@@ -85,7 +21,68 @@ export function Editor({
   onChange = (editor: EditorType) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) {
-  const editor = useEditor({
+  const editor = useCustomEditor({
+    initialValue,
+    placeholder,
+    extensions,
+    editorProps,
+    showCharacterCount,
+    limit,
+    onChange,
+  });
+
+  return (
+    <div suppressContentEditableWarning suppressHydrationWarning>
+      <div
+        onClick={() => {
+          editor?.chain().focus().run();
+        }}
+        className={`${
+          theme === "dark" ? "dark-theme" : ""
+        } eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg sm:eddies-mb-[calc(20vh)] eddies-rounded-lg eddies-border eddies-border-border eddies-shadow-lg ${className}`}
+      >
+        <div className="eddies-flex eddies-justify-between eddies-items-center eddies-px-8 sm:eddies-px-12 eddies-m-0.5 eddies-mt-6 eddies-pt-3">
+          {editor && (
+            <div className="eddies-flex eddies-m-[2px] eddies-gap-x-1">
+              {bubbleMenuItems.map((item, index) => (
+                <BubbleButton
+                  key={index}
+                  item={item}
+                  editor={editor}
+                  contextVariant={true}
+                />
+              ))}
+            </div>
+          )}
+
+          {showCharacterCount && editor && (
+            <div className="eddies-flex eddies-z-10 eddies-rounded-lg eddies-border eddies-border-border eddies-px-2 eddies-py-1 eddies-text-sm eddies-bg-color-bg-secondary eddies-text-color-text-secondary">
+              {editor?.storage.characterCount.characters()}/{limit}
+            </div>
+          )}
+        </div>
+
+        {editor && <BubbleMenu editor={editor} />}
+        <EditorContent editor={editor} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * This hook exposes the editor instance and allows you to render it however you want.
+ */
+export const useCustomEditor = ({
+  initialValue,
+  placeholder,
+  extensions = [],
+  editorProps = {},
+  showCharacterCount = false,
+  limit = showCharacterCount ? 3000 : 0,
+  onChange = (editor: EditorType) =>
+    console.log("You should provide an onChange handler to the editor."),
+}: EditorProps) => {
+  return useEditor({
     extensions: [
       ...extensions,
       ...defaultExtensions,
@@ -120,25 +117,4 @@ export function Editor({
     },
     content: initialValue ?? "",
   }) as EditorType;
-
-  return (
-    <div suppressContentEditableWarning suppressHydrationWarning>
-      <div
-        onClick={() => {
-          editor?.chain().focus().run();
-        }}
-        className={`${
-          theme === "dark" ? "dark-theme" : ""
-        } eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg sm:eddies-mb-[calc(20vh)] eddies-rounded-lg sm:eddies-border eddies-border-border sm:eddies-shadow-lg ${className}`}
-      >
-        {showCharacterCount && (
-          <div className="absolute right-5 top-5 mb-5 z-10 rounded-lg bg-stone-100 px-2 py-1 text-sm text-stone-400 rounded-t-lg eddies-bg-color-bg-secondary eddies-text-color-text-secondary">
-            {editor?.storage.characterCount.characters()}/{limit}
-          </div>
-        )}
-        {editor && <BubbleMenu editor={editor} />}
-        <EditorContent editor={editor} />
-      </div>
-    </div>
-  );
-}
+};

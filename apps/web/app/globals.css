@@ -6,14 +6,14 @@
   :root {
     --eddies-bg-color: white;
     --eddies-text-color: black;
-    --eddies-bg-secondary-color: rgb(228, 228, 228);
-    --eddies-text-secondary-color: rgb(168 162 158);
+    --eddies-bg-secondary-color: rgb(224, 221, 221);
+    --eddies-text-secondary-color: rgb(124, 121, 119);
   }
 
   .dark-theme {
     --eddies-bg-color: #222222;
     --eddies-text-color: #e1f7f1;
     --eddies-bg-secondary-color: #2e2e2e;
-    --eddies-text-secondary-color: rgb(168 162 158);
+    --eddies-text-secondary-color: rgb(185, 182, 181);
   }
 }

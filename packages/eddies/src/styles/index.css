@@ -14,7 +14,7 @@
   --eddies-stone-800: rgb(41 37 36);
   --eddies-stone-900: rgb(28 25 23);
 
-  --border: rgba(226, 232, 255, 0.3);
+  --border: rgba(212, 216, 231, 0.356);
 }
 
 .dark-theme {
@@ -29,22 +29,11 @@
   --eddies-stone-800: rgb(232 234 235);
   --eddies-stone-900: rgb(240, 240, 241);
 
-  --border: rgba(226, 232, 255, 0.4);
+  --border: rgba(226, 232, 255, 0.1);
 }
 
 .ProseMirror,
 .eddies-container {
-  background-color: var(--eddies-bg-color);
-  color: var(--eddies-text-color);
-}
-
-.ProseMirror,
-.eddies-container {
-  background-color: var(--eddies-bg-color);
-  color: var(--eddies-text-color);
-}
-
-ul[data-type="taskList"] li > label input[type="checkbox"] {
   background-color: var(--eddies-bg-color);
   color: var(--eddies-text-color);
 }
@@ -67,13 +56,6 @@ ul[data-type="taskList"] li > label input[type="checkbox"] {
   margin-right: 0.17rem;
 }
 
-@font-face {
-  font-family: "Cal Sans";
-  src:
-    local("Cal Sans"),
-    url(CalSans-SemiBold.otf) format("otf");
-}
-
 .ProseMirror .is-editor-empty:first-child::before {
   content: attr(data-placeholder);
   float: left;
@@ -90,8 +72,32 @@ ul[data-type="taskList"] li > label input[type="checkbox"] {
   height: 0;
 }
 
+ul[data-type="taskList"] li > label {
+  margin-right: 0.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  ul[data-type="taskList"] li > label {
+    margin-right: 0.5rem;
+  }
+}
+
+ul[data-type="taskList"] li > label input[type="checkbox"] {
+  background-color: var(--eddies-bg-color);
+  color: var(--eddies-text-color);
+  margin: 0;
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 5px;
+  margin-right: 0.3rem;
+  display: grid;
+  place-content: center;
+}
+
 .ProseMirror {
-  @apply eddies-p-12 eddies-px-8 sm:eddies-px-12 eddies-m-0.5;
+  @apply eddies-py-3 eddies-px-8 sm:eddies-px-12 eddies-m-0.5;
 }
 
 .ProseMirror h1 {
@@ -128,26 +134,4 @@ ul[data-type="taskList"] li > label input[type="checkbox"] {
 
 .dark-theme .ProseMirror a {
   @apply eddies-bg-blue-700/10 eddies-text-blue-300 eddies-ring-blue-300/10;
-}
-
-ul[data-type="taskList"] li > label {
-  margin-right: 0.2rem;
-}
-
-@media screen and (max-width: 768px) {
-  ul[data-type="taskList"] li > label {
-    margin-right: 0.5rem;
-  }
-}
-
-ul[data-type="taskList"] li > label input[type="checkbox"] {
-  margin: 0;
-  cursor: pointer;
-  width: 1em;
-  height: 1em;
-  position: relative;
-  top: 5px;
-  margin-right: 0.3rem;
-  display: grid;
-  place-content: center;
 }
