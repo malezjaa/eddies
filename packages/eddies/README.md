@@ -1,6 +1,6 @@
 <p align="center">
   <p align="center">
-   <img style="border-radius: 50%;" width="150" height="150" src="./apps/docs/src/public/logo.png" alt="Logo">
+   <img style="border-radius: 50%;" width="150" height="150" src="./public/logo.png" alt="Logo">
   </p>
 	<h1 align="center"><b>Eddies</b></h1>
 	<p align="center">
@@ -8,7 +8,6 @@
   </p>
 </p>
 
-> [!IMPORTANT]
 > If you encounter any error with the documentation or with the code itself please report it.
 
 ## Quick start
