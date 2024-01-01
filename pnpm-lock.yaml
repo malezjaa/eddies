@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@eddies/typescript-config':
-        specifier: workspace:*
-        version: link:packages/typescript-config
       prettier:
         specifier: ^3.1.0
         version: 3.1.1
@@ -54,9 +51,6 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@eddies/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/typescript-config
       '@next/eslint-plugin-next':
         specifier: ^14.0.2
         version: 14.0.4
@@ -151,9 +145,6 @@ importers:
         specifier: ^0.8.8
         version: 0.8.8(@tiptap/core@2.1.13)
     devDependencies:
-      '@eddies/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
       '@tailwindcss/typography':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@3.4.0)
@@ -190,8 +181,6 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.3.3
-
-  packages/typescript-config: {}
 
 packages:
 
