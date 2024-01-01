@@ -39,7 +39,7 @@ jobs:
       - name: Build with VitePress
         run: |
           pnpm run docs:build
-          touch apps/docs/src/docs/.vitepress/dist/.nojekyll
+          touch ./apps/docs/src/docs/.vitepress/dist/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
