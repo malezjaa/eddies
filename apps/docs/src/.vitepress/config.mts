@@ -107,4 +107,5 @@ export default defineConfig({
       { icon: "github", link: "https://github.com/malezjaa/eddies" },
     ],
   },
+  base: "/",
 });
