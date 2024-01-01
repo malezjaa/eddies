@@ -60,29 +60,6 @@ button.copy::after {
   background-size: contain;
 }
 
-#VPSidebarNav > .group {
-  @apply border-t-0;
-
-  & > .VPSidebarItem {
-    @apply pb-2;
-
-    & > .items {
-      & > div {
-        @apply pl-4 mb-0.5 dark:border-l-gray-600 rounded-lg;
-
-        &:hover,
-        &:focus {
-          background-color: var(--vp-c-brand-nav-active);
-        }
-
-        &.is-active.has-active {
-          background-color: var(--vp-c-brand-nav-active);
-        }
-      }
-    }
-  }
-}
-
 .custom-block.tip {
   @apply !my-8 !rounded-xl !shadow-2xl !shadow-green-200/20 dark:!shadow-green-700/30;
 }
