@@ -5,8 +5,10 @@ import Placeholder from "@tiptap/extension-placeholder";
 import "./styles/index.css";
 import { cn } from "./utils";
 import CharacterCount from "@tiptap/extension-character-count";
-import BubbleMenu, { bubbleMenuItems } from "./bubble-menu/bubble-menu";
-import BubbleButton from "./bubble-menu/bubble-button";
+import BubbleMenu, {
+  defaultBubbleMenuItems,
+} from "./components/bubble-menu/bubble-menu";
+import BubbleButton from "./components/bubble-menu/bubble-button";
 import { EditorProps, EditorType } from "./types";
 
 export function Editor({
@@ -18,6 +20,8 @@ export function Editor({
   theme = "dark",
   showCharacterCount = false,
   limit = showCharacterCount ? 3000 : 0,
+  menu = true,
+  bubbleMenuItems = defaultBubbleMenuItems,
   onChange = (editor: EditorType) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) {
@@ -31,6 +35,12 @@ export function Editor({
     onChange,
   });
 
+  const bMenuItems = !Array.isArray(bubbleMenuItems)
+    ? bubbleMenuItems.includeDefault
+      ? [...defaultBubbleMenuItems, ...bubbleMenuItems.items!]
+      : bubbleMenuItems.items
+    : bubbleMenuItems;
+
   return (
     <div suppressContentEditableWarning suppressHydrationWarning>
       <div
@@ -42,9 +52,9 @@ export function Editor({
         } eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg sm:eddies-mb-[calc(20vh)] eddies-rounded-lg eddies-border eddies-border-border eddies-shadow-lg ${className}`}
       >
         <div className="eddies-flex eddies-justify-between eddies-items-center eddies-px-8 sm:eddies-px-12 eddies-m-0.5 eddies-mt-6 eddies-pt-3">
-          {editor && (
-            <div className="eddies-flex eddies-m-[2px] eddies-gap-x-1">
-              {bubbleMenuItems.map((item, index) => (
+          {editor && menu ? (
+            <div className="eddies-flex eddies-m-[2px] eddies-flex-row eddies-flex-wrap eddies-gap-1">
+              {bMenuItems?.map((item, index) => (
                 <BubbleButton
                   key={index}
                   item={item}
@@ -53,6 +63,8 @@ export function Editor({
                 />
               ))}
             </div>
+          ) : (
+            <div></div>
           )}
 
           {showCharacterCount && editor && (
@@ -62,7 +74,7 @@ export function Editor({
           )}
         </div>
 
-        {editor && <BubbleMenu editor={editor} />}
+        {editor && <BubbleMenu editor={editor} items={bMenuItems} />}
         <EditorContent editor={editor} />
       </div>
     </div>

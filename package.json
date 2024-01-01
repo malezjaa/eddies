@@ -6,7 +6,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "dev:test": "turbo run build --filter eddies && pnpm install && pnpm dev"
+    "dev:test": "turbo run build --filter eddies && pnpm install && pnpm dev --filter web",
+    "dev:docs": "turbo run dev --filter docs"
   },
   "devDependencies": {
     "@eddies/typescript-config": "workspace:*",

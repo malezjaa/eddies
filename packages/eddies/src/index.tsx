@@ -1,5 +1,5 @@
 "use client";
 
 export * from "./editor";
-export * from "./bubble-menu/bubble-menu";
-export * from "./bubble-menu/bubble-button";
+export * from "./components/bubble-menu/bubble-menu";
+export * from "./components/bubble-menu/bubble-button";

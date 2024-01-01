@@ -1,7 +1,10 @@
-import { Extensions, Content, Editor as TiptapEditor } from "@tiptap/react";
-import { EditorProps as TiptapEditorProps } from "@tiptap/pm/view";
-import { BubbleMenuItem } from "./components/bubble-menu/bubble-menu";
+---
+outline: deep
+---
 
+# Editor Props
+
+```ts
 export type EditorProps = {
   /**
    * The class name to use for the editor.
@@ -71,21 +74,4 @@ export type EditorProps = {
         items?: BubbleMenuItem[];
       };
 };
-
-export type EditorType = TiptapEditor & {
-  /**
-   * Returns the markdown representation of the editor's content.
-   */
-  getMarkdown: () => string;
-};
-
-export type CustomEditorProps = Pick<
-  EditorProps,
-  | "limit"
-  | "editorProps"
-  | "extensions"
-  | "placeholder"
-  | "onChange"
-  | "initialValue"
-  | "showCharacterCount"
->;
+```

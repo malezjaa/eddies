@@ -1,15 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class", ".dark-theme"],
+  darkMode: ["class"],
   content: [
     "../../packages/eddies/src/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./ui/**/*.{js,ts,jsx,tsx}",
     `src/**/*.{js,ts,jsx,tsx}`,
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: "eddies-",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         stone: {
@@ -24,7 +35,9 @@ module.exports = {
           800: "var(--stone-800)",
           900: "var(--stone-900)",
         },
-        border: "var(--border)",
+        border: "var(--eddies-border)",
+        muted: "var(--eddies-muted)",
+        hover: "var(--eddies-hover)",
         color: {
           bg: {
             DEFAULT: "var(--eddies-bg-color)",
@@ -36,7 +49,10 @@ module.exports = {
           },
         },
       },
+      boxShadow: {
+        custom: "var(--eddies-box-shadow)",
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
