@@ -14,6 +14,9 @@ importers:
       turbo:
         specifier: latest
         version: 1.11.2
+      vitepress:
+        specifier: 1.0.0-rc.34
+        version: 1.0.0-rc.34(@algolia/client-search@4.22.0)(postcss@8.4.32)(search-insights@2.13.0)
 
   apps/docs:
     devDependencies:

@@ -7,11 +7,14 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "dev:test": "turbo run build --filter eddies && pnpm install && pnpm dev --filter web",
-    "dev:docs": "turbo run dev --filter docs"
+    "dev:docs": "turbo run dev --filter docs",
+    "docs:build": "vitepress build apps/docs/src",
+    "docs:preview": "vitepress preview apps/docs/src"
   },
   "devDependencies": {
     "prettier": "^3.1.0",
-    "turbo": "latest"
+    "turbo": "latest",
+    "vitepress": "1.0.0-rc.34"
   },
   "packageManager": "pnpm@8.9.0",
   "engines": {
