@@ -1,7 +1,15 @@
 {
   "name": "eddies",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "author": "malezjaa <https://www.github.com/malezjaa>",
+  "description": "Fully featured, modern and extensible editor",
+  "keywords": [
+    "editor",
+    "markdown",
+    "html",
+    "tiptap",
+    "typescript"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

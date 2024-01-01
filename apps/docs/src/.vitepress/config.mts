@@ -33,7 +33,7 @@ export default defineConfig({
       "link",
       {
         rel: "icon",
-        href: "/logo.png",
+        href: "/eddies/logo.png",
       },
     ],
   ],

@@ -8,6 +8,9 @@
   </p>
 </p>
 
+> [!IMPORTANT]
+> If you encounter any error with the documentation or with the code itself please report it.
+
 ## Quick start
 
 ```bash
