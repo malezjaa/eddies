@@ -1,5 +1,9 @@
 "use client";
-import { useEditor, EditorContent } from "@tiptap/react";
+import {
+  useEditor,
+  EditorContent,
+  Editor as TiptapEditor,
+} from "@tiptap/react";
 import { defaultExtensions } from "./extensions";
 import Placeholder from "@tiptap/extension-placeholder";
 import "./styles/index.css";
@@ -9,7 +13,8 @@ import BubbleMenu, {
   defaultBubbleMenuItems,
 } from "./components/bubble-menu/bubble-menu";
 import BubbleButton from "./components/bubble-menu/bubble-button";
-import { EditorProps, EditorType } from "./types";
+import { EditorProps } from "./types";
+import { Editor as CoreEditor } from "@tiptap/core";
 
 export function Editor({
   initialValue,
@@ -22,7 +27,7 @@ export function Editor({
   limit = showCharacterCount ? 3000 : 0,
   menu = true,
   bubbleMenuItems = defaultBubbleMenuItems,
-  onChange = (editor: EditorType) =>
+  onChange = (editor: CoreEditor) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) {
   const editor = useCustomEditor({
@@ -91,7 +96,7 @@ export const useCustomEditor = ({
   editorProps = {},
   showCharacterCount = false,
   limit = showCharacterCount ? 3000 : 0,
-  onChange = (editor: EditorType) =>
+  onChange = (editor: CoreEditor) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) => {
   return useEditor({
@@ -112,11 +117,7 @@ export const useCustomEditor = ({
       }),
     ],
     onUpdate: (e) => {
-      //@ts-ignore
-      onChange({
-        ...e.editor,
-        getMarkdown: () => e.editor.storage.markdown.getMarkdown(),
-      });
+      onChange(e.editor as TiptapEditor);
     },
     editorProps: {
       ...editorProps,
@@ -128,5 +129,5 @@ export const useCustomEditor = ({
       },
     },
     content: initialValue ?? "",
-  }) as EditorType;
+  }) as TiptapEditor;
 };

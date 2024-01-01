@@ -1,6 +1,7 @@
 import { Extensions, Content, Editor as TiptapEditor } from "@tiptap/react";
 import { EditorProps as TiptapEditorProps } from "@tiptap/pm/view";
 import { BubbleMenuItem } from "./components/bubble-menu/bubble-menu";
+import { Editor as CoreEditor } from "@tiptap/react";
 
 export type EditorProps = {
   /**
@@ -40,7 +41,7 @@ export type EditorProps = {
   /**
    * Handles the editor's value change.
    */
-  onChange?: (editor: EditorType) => void | Promise<void>;
+  onChange?: (editor: CoreEditor) => void | Promise<void>;
 
   /**
    * Show character count.
@@ -70,13 +71,6 @@ export type EditorProps = {
 
         items?: BubbleMenuItem[];
       };
-};
-
-export type EditorType = TiptapEditor & {
-  /**
-   * Returns the markdown representation of the editor's content.
-   */
-  getMarkdown: () => string;
 };
 
 export type CustomEditorProps = Pick<

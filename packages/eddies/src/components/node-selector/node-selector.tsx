@@ -5,14 +5,11 @@ import {
   Heading1,
   Heading2,
   Heading3,
-  TextQuote,
   ListOrdered,
   TextIcon,
-  Code,
-  CheckSquare,
 } from "lucide-react";
 import * as Popover from "@radix-ui/react-popover";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 export default function NodeSelector({ editor }: { editor: Editor }) {
   const [isOpen, setIsOpen] = useState(false);

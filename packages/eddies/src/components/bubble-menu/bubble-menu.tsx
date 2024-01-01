@@ -1,4 +1,5 @@
-import { Editor, BubbleMenu as TiptapBubbleMenu } from "@tiptap/react";
+import { BubbleMenu as TiptapBubbleMenu } from "@tiptap/react";
+import { Editor } from "@tiptap/react";
 import BubbleButton from "./bubble-button";
 import {
   BoldIcon,
