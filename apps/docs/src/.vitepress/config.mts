@@ -36,6 +36,17 @@ export default defineConfig({
         href: "/eddies/logo.png",
       },
     ],
+    [
+      "script",
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-FKZEV9Q6M2",
+      },
+    ],
+    [
+      "script",
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-FKZEV9Q6M2');",
+    ],
   ],
   themeConfig: {
     logo: "/logo.png",
