@@ -54,7 +54,7 @@ export function Editor({
         }}
         className={`${
           theme === "dark" ? "dark-theme" : ""
-        } eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg sm:eddies-mb-[calc(20vh)] eddies-rounded-lg eddies-border eddies-border-border eddies-shadow-lg ${className}`}
+        } eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg eddies-rounded-lg eddies-border eddies-border-border eddies-shadow-lg ${className}`}
       >
         <div className="eddies-flex eddies-justify-between eddies-items-center eddies-px-8 sm:eddies-px-12 eddies-m-0.5 eddies-mt-6 eddies-pt-3">
           {editor && menu ? (
