@@ -98,7 +98,6 @@ export default defineConfig({
       {
         text: "📖 Reference",
         items: [
-          { text: "Editor", link: "/docs/reference/editor" },
           { text: "EditorProps", link: "/docs/reference/editor-props" },
           { text: "BubbleMenuItem", link: "/docs/reference/bubble-menu-item" },
         ],

@@ -20,6 +20,6 @@ export default function Page() {
 
 | Prop              | Type                                                    | Description                                   |
 | ----------------- | ------------------------------------------------------- | --------------------------------------------- |
-| `editor`          | [`Editor`](/docs/reference/editor)                      | Editor instance                               |
+| `editor`          | `Editor`                                                | Editor instance                               |
 | `item`            | [`BubbleMenuItem`](/docs/reference/bubble-menu-item.md) | Bubble menu item                              |
 | `contextVariant?` | `boolean`                                               | Based on this variable buttons changes styles |
