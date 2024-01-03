@@ -39,7 +39,7 @@ importers:
         specifier: ^2.1.13
         version: 2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)(react-dom@18.2.0)(react@18.2.0)
       eddies:
-        specifier: 0.0.6
+        specifier: 0.0.8
         version: link:../../packages/eddies
       lucide-react:
         specifier: ^0.303.0
