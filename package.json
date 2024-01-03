@@ -9,9 +9,11 @@
     "dev:test": "turbo run build --filter eddies && pnpm install && pnpm dev --filter web",
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
-    "docs:preview": "vitepress preview apps/docs/src"
+    "docs:preview": "vitepress preview apps/docs/src",
+    "release": "pnpm build && changelogen --release --push --dir ./packages/eddies && npm publish"
   },
   "devDependencies": {
+    "changelogen": "^0.5.5",
     "prettier": "^3.1.0",
     "turbo": "latest",
     "vitepress": "1.0.0-rc.34"
