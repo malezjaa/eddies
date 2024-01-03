@@ -11,6 +11,10 @@
 > [!IMPORTANT]
 > If you encounter any error with the documentation or with the code itself please report it.
 
+<p align="center">
+<img style="border-radius: 10px;" src=".github/preview.png" alt="Logo">
+<p>
+
 ## Quick start
 
 ```bash
