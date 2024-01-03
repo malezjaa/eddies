@@ -54,5 +54,8 @@ module.exports = {
       },
     },
   },
+  corePlugins: {
+    preflight: false,
+  },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
