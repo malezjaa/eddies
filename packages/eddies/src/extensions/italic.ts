@@ -27,7 +27,6 @@ declare module "@tiptap/core" {
     };
   }
 }
-
 export const starInputRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))$/;
 export const starPasteRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))/g;
 

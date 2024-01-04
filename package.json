@@ -15,28 +15,16 @@
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "release:patch": "lerna version patch --no-push --force-publish",
-    "release:minor": "lerna version minor --no-push --force-publish",
-    "release:major": "lerna version major --no-push --force-publish",
-    "lerna:publish": "pnpm run build && lerna exec --since --no-private -- pnpm publish --tag latest --access public"
-  },
-  "changelog": {
-    "labels": {
-      "tag: new feature": ":rocket: New Feature",
-      "tag: breaking change": ":boom: Breaking Change",
-      "tag: bug fix": ":bug: Bug Fix",
-      "tag: enhancement": ":nail_care: Enhancement",
-      "tag: documentation": ":memo: Documentation",
-      "tag: internal": ":house: Internal",
-      "tag: underlying tools": ":hammer: Underlying Tools"
-    },
-    "cacheDir": ".changelog"
+    "release:patch": "lerna version patch --no-push --force-publish --no-changelog --no-git-tag-version && changelogen --patch --release --push",
+    "release:minor": "lerna version minor --no-push --force-publish --no-changelog --no-git-tag-version && changelogen --minor --release --push",
+    "release:major": "lerna version major --no-push --force-publish --no-changelog --no-git-tag-version && changelogen --major --release --push",
+    "lerna:publish": "pnpm run build && lerna exec --since --no-private -- pnpm publish --tag latest --access public",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "changelogen": "^0.5.5",
     "husky": "^8.0.3",
     "lerna": "^7.0.2",
-    "lerna-changelog": "^2.2.0",
-    "lint-staged": "^15.2.0",
     "prettier": "^3.1.0",
     "turbo": "latest",
     "vitepress": "1.0.0-rc.34"
@@ -44,15 +32,5 @@
   "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
-      "prettier --write"
-    ]
   }
 }
