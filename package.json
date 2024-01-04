@@ -2,8 +2,11 @@
   "name": "eddies",
   "private": true,
   "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "turbo build",
+    "build": "lerna run build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -11,10 +14,10 @@
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "release:patch": "lerna version patch --force-publish --no-push && pnpm publish",
-    "release:minor": "lerna version minor --force-publish --no-push && pnpm publish",
-    "release:major": "lerna version major --force-publish --no-push && pnpm publish",
-    "publish": "lerna run build && lerna publish --no-private"
+    "release:patch": "lerna version patch --no-push --force-publish",
+    "release:minor": "lerna version minor --no-push --force-publish",
+    "release:major": "lerna version major --no-push --force-publish",
+    "lerna:publish": "pnpm run build && lerna exec --since --no-private -- pnpm publish --tag latest --access public"
   },
   "devDependencies": {
     "lerna": "^7.0.2",
