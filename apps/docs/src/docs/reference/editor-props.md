@@ -73,5 +73,16 @@ export type EditorProps = {
 
         items?: BubbleMenuItem[];
       };
+
+  /**
+   * Disables the editor.
+   */
+  isEditable?: boolean;
+
+  /**
+   * Auto focus settings
+   * @see https://tiptap.dev/docs/editor/api/editor#autofocus
+   */
+  autofocus?: FocusPosition;
 };
 ```

@@ -24,6 +24,7 @@ export default function BubbleButton({
           : "eddies-bg-color-bg-secondary hover:eddies-bg-hover"
       }`}
       type="button"
+      disabled={editor.isEditable}
     >
       <item.icon className={"eddies-h-4 eddies-w-4"} />
     </button>

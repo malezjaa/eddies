@@ -1,4 +1,9 @@
-import { Extensions, Content, Editor as TiptapEditor } from "@tiptap/react";
+import {
+  Extensions,
+  Content,
+  Editor as TiptapEditor,
+  FocusPosition,
+} from "@tiptap/react";
 import { EditorProps as TiptapEditorProps } from "@tiptap/pm/view";
 import { BubbleMenuItem } from "./components/bubble-menu/bubble-menu";
 import { Editor as CoreEditor } from "@tiptap/react";
@@ -76,6 +81,12 @@ export type EditorProps = {
    * Disables the editor.
    */
   isEditable?: boolean;
+
+  /**
+   * Auto focus settings
+   * @see https://tiptap.dev/docs/editor/api/editor#autofocus
+   */
+  autofocus?: FocusPosition;
 };
 
 export type CustomEditorProps = Pick<
