@@ -14,7 +14,7 @@
     "release:patch": "lerna version patch --force-publish --no-push && pnpm publish",
     "release:minor": "lerna version minor --force-publish --no-push && pnpm publish",
     "release:major": "lerna version major --force-publish --no-push && pnpm publish",
-    "publish": "lerna run build && lerna exec --no-private -- pnpm publish --access public"
+    "publish": "lerna run build && lerna publish --no-private"
   },
   "devDependencies": {
     "lerna": "^7.0.2",
