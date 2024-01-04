@@ -10,6 +10,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changelog": "lerna-changelog",
     "dev:test": "turbo run build --filter eddies && pnpm install && pnpm dev --filter web",
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
@@ -19,8 +20,23 @@
     "release:major": "lerna version major --no-push --force-publish",
     "lerna:publish": "pnpm run build && lerna exec --since --no-private -- pnpm publish --tag latest --access public"
   },
+  "changelog": {
+    "labels": {
+      "tag: new feature": ":rocket: New Feature",
+      "tag: breaking change": ":boom: Breaking Change",
+      "tag: bug fix": ":bug: Bug Fix",
+      "tag: enhancement": ":nail_care: Enhancement",
+      "tag: documentation": ":memo: Documentation",
+      "tag: internal": ":house: Internal",
+      "tag: underlying tools": ":hammer: Underlying Tools"
+    },
+    "cacheDir": ".changelog"
+  },
   "devDependencies": {
+    "husky": "^8.0.3",
     "lerna": "^7.0.2",
+    "lerna-changelog": "^2.2.0",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.1.0",
     "turbo": "latest",
     "vitepress": "1.0.0-rc.34"
@@ -28,5 +44,15 @@
   "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
+      "prettier --write"
+    ]
   }
 }
