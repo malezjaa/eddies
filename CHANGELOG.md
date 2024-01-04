@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v0.0.2
+
+[compare changes](https://github.com/malezjaa/eddies/compare/v0.1.4...v0.0.2)
+
+### 🚀 Enhancements
+
+- Husky and lerna changelog ([d12dd75](https://github.com/malezjaa/eddies/commit/d12dd75))
+
+### 🩹 Fixes
+
+- Use changelogen for changelogs ([00f9dea](https://github.com/malezjaa/eddies/commit/00f9dea))
+
+### ❤️ Contributors
+
+- Malezjaa
+
 ## [0.1.4](https://github.com/malezjaa/eddies/compare/v0.1.0...v0.1.4) (2024-01-04)
 
 **Note:** Version bump only for package eddies
