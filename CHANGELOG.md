@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/malezjaa/eddies/compare/v0.0.1...v0.1.0) (2024-01-04)
+
+### Bug Fixes
+
+- publish script ([e50d3c5](https://github.com/malezjaa/eddies/commit/e50d3c53648ad84f14eb6ae272e20deef6d0ca0b))
+
 ## 0.0.1 (2024-01-04)
 
 ### Bug Fixes
