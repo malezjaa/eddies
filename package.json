@@ -10,11 +10,13 @@
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "release": "pnpm build --filter ./packages/eddies && changelogen --release --push --dir ./packages/eddies",
-    "publish": "pnpm publish --filter ./packages/eddies"
+    "release:patch": "lerna version patch --force-publish --no-push && pnpm publish",
+    "release:minor": "lerna version minor --force-publish --no-push && pnpm publish",
+    "release:major": "lerna version major --force-publish --no-push && pnpm publish",
+    "publish": "lerna run build && lerna exec --no-private -- pnpm publish --access public"
   },
   "devDependencies": {
-    "changelogen": "^0.5.5",
+    "lerna": "^7.0.2",
     "prettier": "^3.1.0",
     "turbo": "latest",
     "vitepress": "1.0.0-rc.34"
