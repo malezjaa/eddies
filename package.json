@@ -15,9 +15,9 @@
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "release:patch": "lerna version patch --no-push --force-publish --create-release && lerna exec -- git cliff -o CHANGELOG.md",
-    "release:minor": "lerna version minor --no-push --force-publish --create-release && lerna exec -- git cliff -o CHANGELOG.md",
-    "release:major": "lerna version major --no-push --force-publish --create-release && lerna exec -- git cliff -o CHANGELOG.md",
+    "release:patch": "lerna version patch --no-push --force-publish --create-release",
+    "release:minor": "lerna version minor --no-push --force-publish --create-release",
+    "release:major": "lerna version major --no-push --force-publish --create-release",
     "lerna:publish": "pnpm run build && lerna exec --since --no-private -- pnpm publish --tag latest --access public",
     "prepare": "husky install"
   },
