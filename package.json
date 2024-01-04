@@ -10,7 +10,8 @@
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "release": "pnpm build && changelogen --release --push --dir ./packages/eddies && npm publish"
+    "release": "pnpm build --filter ./packages/eddies && changelogen --release --push --dir ./packages/eddies",
+    "publish": "pnpm publish --filter ./packages/eddies"
   },
   "devDependencies": {
     "changelogen": "^0.5.5",

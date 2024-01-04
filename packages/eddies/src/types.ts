@@ -71,6 +71,11 @@ export type EditorProps = {
 
         items?: BubbleMenuItem[];
       };
+
+  /**
+   * Disables the editor.
+   */
+  isEditable?: boolean;
 };
 
 export type CustomEditorProps = Pick<

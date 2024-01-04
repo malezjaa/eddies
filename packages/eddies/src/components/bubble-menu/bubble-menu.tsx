@@ -94,6 +94,17 @@ export default function BubbleMenu({
       <TiptapBubbleMenu
         editor={editor}
         tippyOptions={{ duration: 100 }}
+        shouldShow={({ editor, state }) => {
+          if (
+            !editor.isEditable ||
+            editor.isActive("image") ||
+            state.selection.empty
+          ) {
+            return false;
+          }
+
+          return true;
+        }}
         className="eddies-m-0.5 eddies-mx-1 eddies-rounded-xl eddies-border-box eddies-flex eddies-flex-row eddies-items-center eddies-justify-center eddies-bg-color-bg-secondary eddies-shadow-custom eddies-gap-[2px] eddies-w-fit"
       >
         <NodeSelector editor={editor} />

@@ -27,6 +27,7 @@ export function Editor({
   limit = showCharacterCount ? 3000 : 0,
   menu = true,
   bubbleMenuItems = defaultBubbleMenuItems,
+  isEditable = true,
   onChange = (editor: CoreEditor) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) {
@@ -38,6 +39,7 @@ export function Editor({
     showCharacterCount,
     limit,
     onChange,
+    isEditable,
   });
 
   const bMenuItems = !Array.isArray(bubbleMenuItems)
@@ -96,10 +98,12 @@ export const useCustomEditor = ({
   editorProps = {},
   showCharacterCount = false,
   limit = showCharacterCount ? 3000 : 0,
+  isEditable = true,
   onChange = (editor: CoreEditor) =>
     console.log("You should provide an onChange handler to the editor."),
 }: EditorProps) => {
   return useEditor({
+    editable: isEditable,
     extensions: [
       ...extensions,
       ...defaultExtensions,
