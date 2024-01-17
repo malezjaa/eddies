@@ -12,38 +12,9 @@ export type EditorProps = {
   className?: string;
 
   /**
-   * The initial value of the editor.
-   */
-  initialValue?: Content;
-
-  /**
-   * The placeholder text when the editor is empty.
-   */
-  placeholder?: string;
-
-  /**
-   * Array of extensions to use with the default provided by `eddies`.
-   */
-  extensions?: Extensions;
-
-  /**
-   * Editor props to pass to the editor.
-   */
-  editorProps?: TiptapEditorProps & {
-    attributes?: {
-      class?: string;
-    };
-  };
-
-  /**
    * Defines the editor's theme.
    */
   theme?: "light" | "dark";
-
-  /**
-   * Handles the editor's value change.
-   */
-  onChange?: (editor: EditorType) => void | Promise<void>;
 
   /**
    * Show character count.
@@ -75,6 +46,31 @@ export type EditorProps = {
       };
 
   /**
+   * Triggered when the editor is ready.
+   */
+  onReady?: (editor: EddiesEditor) => void;
+
+  /**
+   * Triggered on every content change.
+   */
+  onContentChange?: (editor: EddiesEditor) => void;
+
+  /**
+   * Content shown every time the editor is created.
+   */
+  initialValue?: Content;
+
+  /**
+   * Extensions to add to the editor.
+   */
+  extensions: Extensions;
+
+  /**
+   * The placeholder text when the editor is empty.
+   */
+  placeholder?: PlaceholderOptions;
+
+  /**
    * Disables the editor.
    */
   isEditable?: boolean;
@@ -84,5 +80,15 @@ export type EditorProps = {
    * @see https://tiptap.dev/docs/editor/api/editor#autofocus
    */
   autofocus?: FocusPosition;
+
+  /**
+   * Custom keyboard shortcuts.
+   */
+  keyboardShortcuts?: Record<string, KeyboardShortcutCommand>;
+
+  /**
+   * Editor props to pass to the editor.
+   */
+  tiptapOptions?: Partial<TiptapEditorOptions>;
 };
 ```

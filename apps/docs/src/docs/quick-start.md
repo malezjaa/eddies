@@ -28,16 +28,16 @@ This is great for getting started quickly, it has everything you need.
 
 ```tsx
 import { EditorContent } from "@tiptap/react";
-import { useCustomEditor } from "eddies";
+import { useEditor } from "eddies";
 
 export default function Page() {
-  const editor = useCustomEditor({
+  const editor = useEditor({
     /** options */
   });
 
   return (
     <div className="m-5">
-      <EditorContent editor={editor} />
+      <EditorContent editor={editor?.tiptap} />
     </div>
   );
 }

@@ -353,26 +353,4 @@ export const Emojis = Mark.create<EmojisOptions>({
       });
     });
   },
-
-  addPasteRules() {
-    const replacements =
-      this.options?.mode === "merge"
-        ? [...emojiReplacements, ...this.options?.emojiReplacements!]
-        : this.options?.emojiReplacements!;
-
-    return replacements!.map((emojiReplacement) => {
-      return markPasteRule({
-        find: toPasteRule(emojiReplacement.find),
-        type: this.type,
-      });
-    });
-  },
 });
-
-const toPasteRule = (regex: RegExp) => {
-  if (regex.toString().slice(-2) === "/$") {
-    let rgx = regex.source.replace("$/", "/g");
-    return new RegExp(rgx);
-  }
-  return regex;
-};

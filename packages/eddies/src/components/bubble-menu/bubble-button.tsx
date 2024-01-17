@@ -1,6 +1,8 @@
+"use client";
+
 import { Editor } from "@tiptap/react";
-import { capitalize, cn } from "../../utils";
 import { BubbleMenuItem } from "./bubble-menu";
+import { EddiesEditor } from "@eddieseditor/core";
 
 export default function BubbleButton({
   item,
@@ -8,13 +10,13 @@ export default function BubbleButton({
   contextVariant = false,
 }: {
   item: BubbleMenuItem;
-  editor: Editor;
+  editor: EddiesEditor;
   contextVariant?: boolean;
 }) {
   return (
     <button
       onClick={() => item.command(editor)}
-      className={`eddies-flex eddies-justify-center eddies-items-center eddies-p-2 eddies-text-color-text-secondary h-[30px] hover:eddies-bg-color-bg-secondary/40 eddies-rounded-md ${
+      className={`eddies-flex eddies-justify-center eddies-items-center eddies-p-2 eddies-text-color-text-secondary h-[30px] w-[30px] hover:eddies-bg-color-bg-secondary/40 eddies-rounded-md ${
         contextVariant
           ? "eddies-rounded-md eddies-border eddies-border-border"
           : ""
@@ -24,7 +26,7 @@ export default function BubbleButton({
           : "eddies-bg-color-bg-secondary hover:eddies-bg-hover"
       }`}
       type="button"
-      disabled={editor.isEditable}
+      disabled={!editor.isEditable}
     >
       <item.icon className={"eddies-h-4 eddies-w-4"} />
     </button>

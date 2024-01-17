@@ -20,5 +20,5 @@ export default function Page() {
 
 | Prop     | Type                                                      | Description                |
 | -------- | --------------------------------------------------------- | -------------------------- |
-| `editor` | `Editor`                                                  | Editor instance            |
+| `editor` | `EddiesEditor`                                            | Editor instance            |
 | `items`  | [`BubbleMenuItem[]`](/docs/reference/bubble-menu-item.md) | Array of bubble menu items |

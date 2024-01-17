@@ -73,6 +73,6 @@ You can also set `initialValue` later by using:
 editor.commands.setContent(`<p>Example Text</p>`);
 ```
 
-- Only available when using `useCustomEditor` hook.
+- Only available when using `useEditor` hook.
 
 :::

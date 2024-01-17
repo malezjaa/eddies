@@ -88,6 +88,16 @@ export default defineConfig({
         ],
       },
       {
+        text: "📅 Extensions",
+        items: [
+          { text: "Emojis", link: "/docs/extensions/emojis" },
+          {
+            text: "Code Highlighting",
+            link: "/docs/extensions/code-highlighting",
+          },
+        ],
+      },
+      {
         text: "📦 Components",
         items: [
           { text: "Editor", link: "/docs/components/editor" },
@@ -100,6 +110,10 @@ export default defineConfig({
         items: [
           { text: "EditorProps", link: "/docs/reference/editor-props" },
           { text: "BubbleMenuItem", link: "/docs/reference/bubble-menu-item" },
+          {
+            text: "PlaceholderOptions",
+            link: "/docs/reference/placeholder-options",
+          },
         ],
       },
       {

@@ -15,11 +15,11 @@ export interface BubbleMenuItem {
    * Function that returns boolean based on whether the command is active
    * @param editor
    */
-  isActive: (editor: Editor) => boolean;
+  isActive: (editor: EddiesEditor) => boolean;
   /**
    * Function to execute the command
    * @param editor
    */
-  command: (editor: any) => void;
+  command: (editor: EddiesEditor) => void;
 }
 ```

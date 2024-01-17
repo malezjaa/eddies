@@ -5,34 +5,31 @@ import {
   mergeAttributes,
 } from "@tiptap/core";
 
-export interface BoldOptions {
+export interface UnderlineOptions {
   HTMLAttributes: Record<string, any>;
 }
 
 declare module "@tiptap/core" {
   interface Commands<ReturnType> {
-    bold: {
+    underline: {
       /**
-       * Set a bold mark
+       * Set an underline mark
        */
-      setBold: () => ReturnType;
+      setUnderline: () => ReturnType;
       /**
-       * Toggle a bold mark
+       * Toggle an underline mark
        */
-      toggleBold: () => ReturnType;
+      toggleUnderline: () => ReturnType;
       /**
-       * Unset a bold mark
+       * Unset an underline mark
        */
-      unsetBold: () => ReturnType;
+      unsetUnderline: () => ReturnType;
     };
   }
 }
 
-export const starInputRegex = /(?:^|\s)((?:\*\*)((?:[^*]+))(?:\*\*))$/;
-export const starPasteRegex = /(?:^|\s)((?:\*\*)((?:[^*]+))(?:\*\*))/g;
-
-export const Bold = Mark.create<BoldOptions>({
-  name: "bold",
+export const UnderlineExtension = Mark.create<UnderlineOptions>({
+  name: "underline",
 
   addOptions() {
     return {
@@ -43,24 +40,20 @@ export const Bold = Mark.create<BoldOptions>({
   parseHTML() {
     return [
       {
-        tag: "strong",
+        tag: "u",
       },
       {
-        tag: "b",
-        getAttrs: (node) =>
-          (node as HTMLElement).style.fontWeight !== "normal" && null,
-      },
-      {
-        style: "font-weight",
-        getAttrs: (value) =>
-          /^(bold(er)?|[5-9]\d{2,})$/.test(value as string) && null,
+        style: "text-decoration",
+        consuming: false,
+        getAttrs: (style) =>
+          (style as string).includes("underline") ? {} : false,
       },
     ];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      "strong",
+      "u",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
       0,
     ];
@@ -68,17 +61,17 @@ export const Bold = Mark.create<BoldOptions>({
 
   addCommands() {
     return {
-      setBold:
+      setUnderline:
         () =>
         ({ commands }) => {
           return commands.setMark(this.name);
         },
-      toggleBold:
+      toggleUnderline:
         () =>
         ({ commands }) => {
           return commands.toggleMark(this.name);
         },
-      unsetBold:
+      unsetUnderline:
         () =>
         ({ commands }) => {
           return commands.unsetMark(this.name);
@@ -88,15 +81,15 @@ export const Bold = Mark.create<BoldOptions>({
 
   addKeyboardShortcuts() {
     return {
-      "Mod-b": () => this.editor.commands.toggleBold(),
-      "Mod-B": () => this.editor.commands.toggleBold(),
+      "Mod-u": () => this.editor.commands.toggleUnderline(),
+      "Mod-U": () => this.editor.commands.toggleUnderline(),
     };
   },
 
   addInputRules() {
     return [
       markInputRule({
-        find: starInputRegex,
+        find: inputRegex,
         type: this.type,
       }),
     ];
@@ -105,9 +98,12 @@ export const Bold = Mark.create<BoldOptions>({
   addPasteRules() {
     return [
       markPasteRule({
-        find: starPasteRegex,
+        find: pasteRegex,
         type: this.type,
       }),
     ];
   },
 });
+
+const inputRegex = /(?:^|\s)((?:__)((?:[^__]+))(?:__))$/;
+const pasteRegex = /(?:^|\s)((?:__)((?:[^__]+))(?:__))/g;

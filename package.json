@@ -11,7 +11,7 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changelog": "lerna-changelog",
-    "dev:test": "turbo run build --filter eddies && pnpm install && pnpm dev --filter web",
+    "dev:test": "pnpm build && pnpm install && pnpm dev --filter web",
     "dev:docs": "turbo run dev --filter docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",

@@ -1,5 +1,6 @@
+"use client";
+
 import { BubbleMenu as TiptapBubbleMenu } from "@tiptap/react";
-import { Editor } from "@tiptap/react";
 import BubbleButton from "./bubble-button";
 import {
   BoldIcon,
@@ -12,6 +13,7 @@ import {
   AlignRight,
 } from "lucide-react";
 import NodeSelector from "../node-selector/node-selector";
+import { EddiesEditor } from "@eddieseditor/core";
 
 export interface BubbleMenuItem {
   name: string;
@@ -23,62 +25,68 @@ export interface BubbleMenuItem {
    * Function that boolean based on whether the command is active
    * @param editor
    */
-  isActive: (editor: Editor) => boolean;
+  isActive: (editor: EddiesEditor) => boolean;
   /**
    * Function to execute the command
    * @param editor
    */
-  command: (editor: any) => void;
+  command: (editor: EddiesEditor) => void;
 }
 
 export const defaultBubbleMenuItems: BubbleMenuItem[] = [
   {
     name: "bold",
     icon: BoldIcon,
-    isActive: (editor) => editor.isActive("bold"),
-    command: (editor) => editor.chain().focus().toggleBold().run(),
+    isActive: (editor) => editor.tiptap.isActive("bold"),
+    command: (editor) => editor.tiptap.chain().focus().toggleBold().run(),
   },
   {
     name: "italic",
     icon: ItalicIcon,
-    isActive: (editor) => editor.isActive("italic"),
-    command: (editor) => editor.chain().focus().toggleItalic().run(),
+    isActive: (editor) => {
+      return editor.tiptap.isActive("italic");
+    },
+    command: (editor) => editor.tiptap.chain().focus().toggleItalic().run(),
   },
   {
     name: "underline",
     icon: UnderlineIcon,
-    isActive: (editor) => editor.isActive("underline"),
-    command: (editor) => editor.chain().focus().toggleUnderline().run(),
+    isActive: (editor) => editor.tiptap.isActive("underline"),
+    //@ts-ignore
+    command: (editor) => editor.tiptap.chain().focus().toggleUnderline().run(),
   },
   {
     name: "strike",
     icon: StrikethroughIcon,
-    isActive: (editor) => editor.isActive("strike"),
-    command: (editor) => editor.chain().focus().toggleStrike().run(),
+    isActive: (editor) => editor.tiptap.isActive("strike"),
+    command: (editor) => editor.tiptap.chain().focus().toggleStrike().run(),
   },
   {
     name: "code",
     icon: CodeIcon,
-    isActive: (editor) => editor.isActive("code"),
-    command: (editor) => editor.chain().focus().toggleCode().run(),
+    isActive: (editor) => editor.tiptap.isActive("code"),
+    command: (editor) => editor.tiptap.chain().focus().toggleCode().run(),
   },
   {
     name: "left",
     icon: AlignLeft,
-    isActive: (editor) => editor.isActive({ textAlign: "left" }),
-    command: (editor) => editor.chain().focus().setTextAlign("left").run(),
+    isActive: (editor) => editor.tiptap.isActive({ textAlign: "left" }),
+    command: (editor) =>
+      editor.tiptap.chain().focus().setTextAlign("left").run(),
   },
   {
     name: "center",
     icon: AlignCenter,
-    isActive: (editor) => editor.isActive({ textAlign: "center" }),
-    command: (editor) => editor.chain().focus().setTextAlign("center").run(),
+    isActive: (editor) => editor.tiptap.isActive({ textAlign: "center" }),
+    command: (editor) =>
+      editor.tiptap.chain().focus().setTextAlign("center").run(),
   },
   {
     name: "right",
     icon: AlignRight,
-    isActive: (editor) => editor.isActive({ textAlign: "right" }),
-    command: (editor) => editor.chain().focus().setTextAlign("right").run(),
+    isActive: (editor) => editor.tiptap.isActive({ textAlign: "right" }),
+    command: (editor) =>
+      editor.tiptap.chain().focus().setTextAlign("right").run(),
   },
 ];
 
@@ -86,13 +94,13 @@ export default function BubbleMenu({
   editor,
   items,
 }: {
-  editor: Editor;
+  editor: EddiesEditor;
   items: BubbleMenuItem[] | undefined;
 }) {
   return (
     <>
       <TiptapBubbleMenu
-        editor={editor}
+        editor={editor.tiptap}
         tippyOptions={{ duration: 100 }}
         shouldShow={({ editor, state }) => {
           if (

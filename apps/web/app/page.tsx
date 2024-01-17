@@ -2,11 +2,17 @@
 
 import { Editor } from "eddies";
 import { useState } from "react";
-import { Accessibility } from "lucide-react";
 import Link from "next/link";
+import { Emojis } from "@eddieseditor/emojis";
+import { CodeHighlight, useHighlighter } from "@eddieseditor/code-highlight";
 
 export default function Page() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const { data, isLoading } = useHighlighter({
+    langs: ["html", "css", "js", "ts", "jsx", "tsx", "json"],
+    themes: ["vitesse-dark"],
+  });
+
   return (
     <div className="flex min-h-screen flex-col items-center sm:px-5 sm:pt-[calc(10vh)] bg-[#353535]">
       <Link href="https://github.com/malezjaa/eddies" target="_blank">
@@ -35,229 +41,159 @@ export default function Page() {
         Change theme
       </button>
       <div className="relative w-full max-w-screen-lg pt-20">
-        <Editor
-          onChange={(editor) => console.log(editor.getJSON())}
-          showCharacterCount={true}
-          theme={theme}
-          limit={3000}
-          initialValue={{
-            type: "doc",
-            content: [
-              {
-                type: "heading",
-                attrs: {
-                  textAlign: "left",
-                  level: 1,
+        {!isLoading && (
+          <Editor
+            showCharacterCount={true}
+            extensions={[
+              Emojis.configure({
+                mode: "override",
+                emojiReplacements: [{ find: /:skrull: $/, replace: "💀 " }],
+              }),
+              CodeHighlight.configure({
+                defaultTheme: "vitesse-dark",
+                HTMLAttributes: {
+                  class: "eddies-code-block",
                 },
-                content: [
-                  {
-                    type: "text",
-                    text: "Hello world 🌍",
-                  },
-                ],
+                shikiji: data,
+              }),
+            ]}
+            theme={theme}
+            limit={3000}
+            placeholder={{
+              enabled: true,
+              text: "Type something here...",
+              nodes: {
+                heading: "Heading",
               },
-              {
-                type: "bulletList",
-                attrs: {
-                  tight: true,
-                  textAlign: "left",
-                },
-                content: [
-                  {
-                    type: "listItem",
-                    attrs: {
-                      textAlign: "left",
+            }}
+            initialValue={{
+              type: "doc",
+              content: [
+                {
+                  type: "heading",
+                  attrs: {
+                    id: "913d4edc-7c83-4711-aaea-aca6723f58dc",
+                    textAlign: "left",
+                    level: 1,
+                  },
+                  content: [
+                    {
+                      type: "text",
+                      text: "Hello world 🌍",
                     },
-                    content: [
-                      {
-                        type: "paragraph",
-                        attrs: {
-                          textAlign: "left",
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  attrs: {
+                    id: null,
+                    textAlign: "left",
+                  },
+                  content: [
+                    {
+                      type: "text",
+                      marks: [
+                        {
+                          type: "bold",
                         },
-                        content: [
-                          {
-                            type: "text",
-                            text: "list",
+                      ],
+                      text: "bold",
+                    },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  attrs: {
+                    id: null,
+                    textAlign: "left",
+                  },
+                  content: [
+                    {
+                      type: "text",
+                      marks: [
+                        {
+                          type: "italic",
+                        },
+                      ],
+                      text: "italic",
+                    },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  attrs: {
+                    id: null,
+                    textAlign: "left",
+                  },
+                  content: [
+                    {
+                      type: "text",
+                      marks: [
+                        {
+                          type: "underline",
+                        },
+                      ],
+                      text: "underline",
+                    },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  attrs: {
+                    id: null,
+                    textAlign: "left",
+                  },
+                  content: [
+                    {
+                      type: "text",
+                      marks: [
+                        {
+                          type: "strike",
+                        },
+                      ],
+                      text: "strike",
+                    },
+                  ],
+                },
+                {
+                  type: "paragraph",
+                  attrs: {
+                    id: null,
+                    textAlign: "left",
+                  },
+                  content: [
+                    {
+                      type: "text",
+                      marks: [
+                        {
+                          type: "code",
+                          attrs: {
+                            textAlign: "left",
                           },
-                        ],
-                      },
-                      {
-                        type: "bulletList",
-                        attrs: {
-                          tight: true,
-                          textAlign: "left",
                         },
-                        content: [
-                          {
-                            type: "listItem",
-                            attrs: {
-                              textAlign: "left",
-                            },
-                            content: [
-                              {
-                                type: "paragraph",
-                                attrs: {
-                                  textAlign: "left",
-                                },
-                                content: [
-                                  {
-                                    type: "text",
-                                    text: "list",
-                                  },
-                                ],
-                              },
-                              {
-                                type: "bulletList",
-                                attrs: {
-                                  tight: true,
-                                  textAlign: "left",
-                                },
-                                content: [
-                                  {
-                                    type: "listItem",
-                                    attrs: {
-                                      textAlign: "left",
-                                    },
-                                    content: [
-                                      {
-                                        type: "paragraph",
-                                        attrs: {
-                                          textAlign: "left",
-                                        },
-                                        content: [
-                                          {
-                                            type: "text",
-                                            text: "list",
-                                          },
-                                        ],
-                                      },
-                                    ],
-                                  },
-                                ],
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "left",
+                      ],
+                      text: "code",
+                    },
+                  ],
                 },
-                content: [
-                  {
-                    type: "text",
-                    marks: [
-                      {
-                        type: "bold",
-                      },
-                    ],
-                    text: "bold",
+                {
+                  type: "codeBlock",
+                  attrs: {
+                    textAlign: "left",
+                    language: "ts",
                   },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "left",
+                  content: [
+                    {
+                      type: "text",
+                      text: 'export const useHighlighter = (options: {\n  langs: string[];\n  themes: string[];\n}) =>\n  useSWR(\n    "-",\n    async () => {\n      const highlighter = await initHighlighter(options.langs, options.themes);\n\n      return highlighter;\n    },\n    { revalidateOnFocus: false }\n  );',
+                    },
+                  ],
                 },
-                content: [
-                  {
-                    type: "text",
-                    marks: [
-                      {
-                        type: "italic",
-                      },
-                    ],
-                    text: "italic",
-                  },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "left",
-                },
-                content: [
-                  {
-                    type: "text",
-                    marks: [
-                      {
-                        type: "underline",
-                      },
-                    ],
-                    text: "underline",
-                  },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "left",
-                },
-                content: [
-                  {
-                    type: "text",
-                    marks: [
-                      {
-                        type: "strike",
-                      },
-                    ],
-                    text: "strike",
-                  },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "left",
-                },
-                content: [
-                  {
-                    type: "text",
-                    marks: [
-                      {
-                        type: "code",
-                        attrs: {
-                          textAlign: "left",
-                        },
-                      },
-                    ],
-                    text: "code",
-                  },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "center",
-                },
-                content: [
-                  {
-                    type: "text",
-                    text: "center",
-                  },
-                ],
-              },
-              {
-                type: "paragraph",
-                attrs: {
-                  textAlign: "right",
-                },
-                content: [
-                  {
-                    type: "text",
-                    text: "right",
-                  },
-                ],
-              },
-            ],
-          }}
-        />
+              ],
+            }}
+            onContentChange={(content) => console.log(content.getJSON())}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
+// modfied version from https://tiptap.dev/docs/editor/api/nodes/code-block-lowlight
+
 import { findChildren } from "@tiptap/core";
 import { Node as ProsemirrorNode } from "@tiptap/pm/model";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { Decoration, DecorationSet } from "@tiptap/pm/view";
 import { CodeHighlightOptions } from ".";
-import { HighlighterGeneric } from "shikiji/types.mjs";
-import { Highlighter, getHighlighter } from "shikiji";
+import { Highlighter } from "shikiji";
 
-function parseNodes(
+function parseHtml(
   nodes: any[],
   props: Record<string, string> = {}
 ): { text: string; properties: Record<string, string> }[] {
@@ -18,7 +19,7 @@ function parseNodes(
       };
 
       if (node.children) {
-        return parseNodes(node.children, properties);
+        return parseHtml(node.children, properties);
       }
 
       return {
@@ -51,7 +52,7 @@ function getDecorations({
         theme: options.defaultTheme,
       });
 
-      parseNodes(html.children).forEach((node) => {
+      parseHtml(html.children).forEach((node) => {
         const to = from + node.text.length;
 
         if (node.properties) {

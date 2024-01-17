@@ -21,9 +21,3 @@ $ yarn install eddies
 ```bash [pnpm]
 $ pnpm install eddies
 ```
-
-:::
-
-::: info Note
-If you plan to use Eddies as a React Hook, you also need to install [`@tiptap/react`](https://www.npmjs.com/package/@tiptap/react).
-:::

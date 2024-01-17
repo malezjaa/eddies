@@ -9,8 +9,12 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
+    "@eddieseditor/emojis": "workspace:*",
+    "@eddieseditor/code-highlight": "workspace:*",
+    "@tiptap/core": "^2.1.13",
+    "@tiptap/pm": "^2.1.13",
     "@tiptap/react": "^2.1.13",
-    "eddies": "0.0.8",
+    "eddies": "workspace:*",
     "lucide-react": "^0.303.0",
     "next": "^14.0.3",
     "react": "^18.2.0",

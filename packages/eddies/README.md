@@ -44,6 +44,8 @@ export default function Page() {
 | `limit?`              | `number`                                                                    | The limit of characters.                                          |
 | `menu?`               | `boolean`                                                                   | Shows menu above the editor.                                      |
 | `bubbleMenuItems?`    | BubbleMenuItem[] or { includeDefault?: boolean; items?: BubbleMenuItem[]; } | Items that will be displayed in bubble menu.                      |
+| `isEditable?`         | `boolean`                                                                   | Defines if editor is editable.                                    |
+| `autoFocus?`          | `FocusPosition`                                                             | Defines if editor should be focused on mount.                     |
 
 [MIT][license] © [malezjaa][author]
 

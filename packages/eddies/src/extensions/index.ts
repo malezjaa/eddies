@@ -8,9 +8,6 @@ import TaskList from "@tiptap/extension-task-list";
 import TextAlign from "@tiptap/extension-text-align";
 import { Markdown } from "tiptap-markdown";
 import Highlight from "@tiptap/extension-highlight";
-import { Underline } from "./underline";
-import { Bold } from "./bold";
-import { Italic } from "./italic";
 
 export const defaultExtensions: Extensions = [
   StarterKit.configure({
@@ -64,6 +61,7 @@ export const defaultExtensions: Extensions = [
     },
     italic: false,
     bold: false,
+    strike: false,
     gapcursor: false,
   }),
   TiptapLink.configure({
@@ -94,9 +92,6 @@ export const defaultExtensions: Extensions = [
     },
     nested: true,
   }),
-  Underline,
-  Bold,
-  Italic,
   Markdown.configure({
     html: false,
     transformCopiedText: true,

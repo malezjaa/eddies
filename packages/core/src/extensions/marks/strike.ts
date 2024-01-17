@@ -1,37 +1,39 @@
 import {
+  isMacOS,
   Mark,
   markInputRule,
   markPasteRule,
   mergeAttributes,
 } from "@tiptap/core";
 
-export interface ItalicOptions {
+export interface StrikeOptions {
   HTMLAttributes: Record<string, any>;
 }
 
 declare module "@tiptap/core" {
   interface Commands<ReturnType> {
-    italic: {
+    strike: {
       /**
-       * Set an italic mark
+       * Set a strike mark
        */
-      setItalic: () => ReturnType;
+      setStrike: () => ReturnType;
       /**
-       * Toggle an italic mark
+       * Toggle a strike mark
        */
-      toggleItalic: () => ReturnType;
+      toggleStrike: () => ReturnType;
       /**
-       * Unset an italic mark
+       * Unset a strike mark
        */
-      unsetItalic: () => ReturnType;
+      unsetStrike: () => ReturnType;
     };
   }
 }
-export const starInputRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))$/;
-export const starPasteRegex = /(?:^|\s)((?:\*)((?:[^*]+))(?:\*))/g;
 
-export const Italic = Mark.create<ItalicOptions>({
-  name: "italic",
+export const inputRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))$/;
+export const pasteRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))/g;
+
+export const StrikeExtension = Mark.create<StrikeOptions>({
+  name: "strike",
 
   addOptions() {
     return {
@@ -42,22 +44,26 @@ export const Italic = Mark.create<ItalicOptions>({
   parseHTML() {
     return [
       {
-        tag: "em",
+        tag: "s",
       },
       {
-        tag: "i",
-        getAttrs: (node) =>
-          (node as HTMLElement).style.fontStyle !== "normal" && null,
+        tag: "del",
       },
       {
-        style: "font-style=italic",
+        tag: "strike",
+      },
+      {
+        style: "text-decoration",
+        consuming: false,
+        getAttrs: (style) =>
+          (style as string).includes("line-through") ? {} : false,
       },
     ];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      "em",
+      "s",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
       0,
     ];
@@ -65,17 +71,17 @@ export const Italic = Mark.create<ItalicOptions>({
 
   addCommands() {
     return {
-      setItalic:
+      setStrike:
         () =>
         ({ commands }) => {
           return commands.setMark(this.name);
         },
-      toggleItalic:
+      toggleStrike:
         () =>
         ({ commands }) => {
           return commands.toggleMark(this.name);
         },
-      unsetItalic:
+      unsetStrike:
         () =>
         ({ commands }) => {
           return commands.unsetMark(this.name);
@@ -84,16 +90,21 @@ export const Italic = Mark.create<ItalicOptions>({
   },
 
   addKeyboardShortcuts() {
-    return {
-      "Mod-i": () => this.editor.commands.toggleItalic(),
-      "Mod-I": () => this.editor.commands.toggleItalic(),
-    };
+    const shortcuts: Record<string, () => boolean> = {};
+
+    if (isMacOS()) {
+      shortcuts["Mod-Shift-s"] = () => this.editor.commands.toggleStrike();
+    } else {
+      shortcuts["Ctrl-Shift-s"] = () => this.editor.commands.toggleStrike();
+    }
+
+    return shortcuts;
   },
 
   addInputRules() {
     return [
       markInputRule({
-        find: starInputRegex,
+        find: inputRegex,
         type: this.type,
       }),
     ];
@@ -102,7 +113,7 @@ export const Italic = Mark.create<ItalicOptions>({
   addPasteRules() {
     return [
       markPasteRule({
-        find: starPasteRegex,
+        find: pasteRegex,
         type: this.type,
       }),
     ];
