@@ -1,8 +1,8 @@
 {
-  "name": "@eddieseditor/emojis",
+  "name": "@eddieseditor/core",
   "version": "1.0.0",
   "author": "malezjaa <https://www.github.com/malezjaa>",
-  "description": "Extension for eddies that adds emojis support",
+  "description": "Core for Eddies editor",
   "homepage": "https://malezjaa.github.io/eddies/",
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "@types/node": "^20.5.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.53.0",
     "postcss": "^8.4.32",
@@ -48,6 +49,9 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@tiptap/core": "^2.1.13"
+    "@tiptap/core": "^2.1.13",
+    "@tiptap/pm": "^2.1.13",
+    "clsx": "^2.1.0",
+    "uuid": "^9.0.1"
   }
 }
