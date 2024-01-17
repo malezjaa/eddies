@@ -1,0 +1,53 @@
+{
+  "name": "@eddieseditor/emojis",
+  "version": "0.1.10",
+  "author": "malezjaa <https://www.github.com/malezjaa>",
+  "description": "Extension for eddies that adds emojis support",
+  "homepage": "https://malezjaa.github.io/eddies/",
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/malezjaa/eddies"
+  },
+  "keywords": [
+    "editor",
+    "markdown",
+    "html",
+    "tiptap",
+    "typescript"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "module": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "@turbo/gen": "^1.10.12",
+    "@types/eslint": "^8.44.7",
+    "@types/node": "^20.5.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@tiptap/core": "^2.1.13"
+  }
+}
