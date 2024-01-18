@@ -1,0 +1,31 @@
+{
+  "extends": "nx/presets/npm.json",
+  "$schema": "node_modules\\nx\\schemas\\nx-schema.json",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "cache": true
+    }
+  },
+  "release": {
+    "projects": [
+      "packages/*",
+      "packages/nx/native-packages/*",
+      "packages-legacy/*"
+    ],
+    "releaseTagPattern": "{version}",
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github",
+        "file": false
+      }
+    }
+  },
+  "nxCloudAccessToken": "MjU5MjhjOTUtOWViOS00YjRmLWFkYjMtM2Q2N2ZlNDA4ZTE0fHJlYWQtd3JpdGU="
+}

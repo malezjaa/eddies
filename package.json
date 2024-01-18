@@ -1,31 +1,27 @@
 {
-  "name": "eddies",
+  "name": "monorepo",
   "private": true,
   "version": "0.0.1",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
+    "build": "nx run-many -t build",
+    "dev": "nx run-many -t dev",
+    "lint": "nx run-many -t lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changelog": "lerna-changelog",
     "dev:test": "pnpm build && pnpm install && pnpm dev --filter web",
-    "dev:docs": "turbo run dev --filter docs",
+    "dev:docs": "nx run-many -t dev -p docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "release:patch": "lerna version patch --force-publish --conventional-commits --no-push --create-release github",
-    "release:minor": "lerna version minor --force-publish --conventional-commits --no-push --create-release github",
-    "release:major": "lerna version major --force-publish --conventional-commits --no-push --create-release github",
-    "lerna:publish": "pnpm run build && lerna exec --since --no-private -- pnpm publish --tag latest --access public",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@nx/js": "^17.2.8",
     "husky": "^8.0.3",
-    "lerna": "^7.0.2",
+    "nx": "17.2.8",
+    "nx-cloud": "latest",
     "prettier": "^3.1.0",
-    "turbo": "latest",
     "vitepress": "1.0.0-rc.34"
   },
   "packageManager": "pnpm@8.9.0",
