@@ -40,6 +40,34 @@
   --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
 }
 
+@layer base {
+  :root {
+    --eddies-bg-color: white;
+    --eddies-text-color: black;
+    --eddies-bg-secondary-color: white;
+    --eddies-text-secondary-color: rgb(31, 31, 31);
+
+    --eddies-border: rgba(226, 232, 255, 0.07);
+    --eddies-muted: rgb(26, 26, 26);
+    --eddies-hover: rgb(46, 45, 45);
+
+    --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
+  }
+
+  .dark-theme {
+    --eddies-bg-color: #1b1b1b;
+    --eddies-text-color: #e1f7f1;
+    --eddies-bg-secondary-color: rgb(35, 35, 35);
+    --eddies-text-secondary-color: rgb(185, 182, 181);
+
+    --eddies-border: rgba(226, 232, 255, 0.07);
+    --eddies-muted: rgb(26, 26, 26);
+    --eddies-hover: rgb(46, 45, 45);
+
+    --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
+  }
+}
+
 .tippy-box {
   border-radius: 0.375rem;
   box-shadow: var(--edies-box-shadow);

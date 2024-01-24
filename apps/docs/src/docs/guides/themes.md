@@ -25,25 +25,25 @@ export default function Page() {
 
 ```css [styles.css]
 :root {
-  --eddies-bg-color: white;
-  --eddies-text-color: black;
-  --eddies-bg-secondary-color: rgb(224, 221, 221);
-  --eddies-text-secondary-color: rgb(124, 121, 119);
-  --eddies-border: rgba(236, 236, 238, 0.856);
-  --eddies-muted: #d8d8d8;
-  --eddies-hover: #ecebeb;
-  --edies-box-shadow: rgb(207, 207, 207) 0px 4px 12px;
+  --eddies-bg-color: white !important;
+  --eddies-text-color: black !important;
+  --eddies-bg-secondary-color: rgb(224, 221, 221) !important;
+  --eddies-text-secondary-color: rgb(124, 121, 119) !important;
+  --eddies-border: rgba(236, 236, 238, 0.856) !important;
+  --eddies-muted: #d8d8d8 !important;
+  --eddies-hover: #ecebeb !important;
+  --edies-box-shadow: rgb(207, 207, 207) 0px 4px 12px !important;
 }
 
 .dark-theme {
-  --eddies-bg-color: #222222;
-  --eddies-text-color: #e1f7f1;
-  --eddies-bg-secondary-color: #2e2e2e;
-  --eddies-text-secondary-color: rgb(185, 182, 181);
-  --eddies-border: rgba(226, 232, 255, 0.07);
-  --eddies-muted: rgb(26, 26, 26);
-  --eddies-hover: rgb(46, 45, 45);
-  --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
+  --eddies-bg-color: #222222 !important;
+  --eddies-text-color: #e1f7f1 !important;
+  --eddies-bg-secondary-color: #2e2e2e !important;
+  --eddies-text-secondary-color: rgb(185, 182, 181) !important;
+  --eddies-border: rgba(226, 232, 255, 0.07) !important;
+  --eddies-muted: rgb(26, 26, 26) !important;
+  --eddies-hover: rgb(46, 45, 45) !important;
+  --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px !important;
 }
 ```
 
