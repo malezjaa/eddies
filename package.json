@@ -6,15 +6,16 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "nx run-many -t build",
-    "dev": "nx run-many -t dev",
+    "build": "nx run-many -t build --projects='packages/**'",
+    "dev": "nx run-many -t dev --projects='apps/**'",
     "lint": "nx run-many -t lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "dev:test": "pnpm build && pnpm install && pnpm dev --filter web",
     "dev:docs": "nx run-many -t dev -p docs",
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "nx-release": "nx release --projects='packages/**'"
   },
   "devDependencies": {
     "@nx/js": "^17.2.8",
