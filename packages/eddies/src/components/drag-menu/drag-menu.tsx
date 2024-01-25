@@ -107,9 +107,9 @@ export default function DragMenu({ editor }: { editor: EddiesEditor }) {
       {isOpen && (
         <div
           draggable={true}
-          className="eddies-drag-handle eddies-fixed eddies-opacity-100 eddies-z-[100] eddies-cursor-grab eddies-[1.5rem] eddies-[1.5rem] eddies-text-lg eddies-rounded-md eddies-text-color-text"
+          className="eddies-flex eddies-group eddies-items-center eddies-justify-center eddies-border eddies-text-sm eddies-font-semibold eddies-rounded-md eddies-whitespace-nowrap eddies-bg-color-bg eddies-border-border eddies-text-neutral-500 eddies-h-7 eddies-gap-1 eddies-min-w-[1.7rem] eddies-px-1.5 eddies-w-auto eddies-drag-handle eddies-fixed eddies-opacity-100 eddies-z-[100] eddies-cursor-pointer eddies-text-color-text hover:eddies-bg-color-bg-secondary"
           style={{
-            left: `${pos?.left! - pos?.width!}px`,
+            left: `${pos?.left! - pos?.width! - 13}px`,
             top: `${pos?.top!}px`,
           }}
         >
