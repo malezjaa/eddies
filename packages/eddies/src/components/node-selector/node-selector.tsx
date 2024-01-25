@@ -58,7 +58,7 @@ export default function NodeSelector({ editor }: { editor: EddiesEditor }) {
       isActive: () => editor.tiptap.isActive("bulletList"),
     },
     {
-      name: "Numbered List",
+      name: "Numbered",
       icon: ListOrdered,
       command: () => editor.tiptap.chain().focus().toggleOrderedList().run(),
       isActive: () => editor.tiptap.isActive("orderedList"),
@@ -82,7 +82,7 @@ export default function NodeSelector({ editor }: { editor: EddiesEditor }) {
 
         <Popover.Content
           align="start"
-          className="eddies-shadow-custom eddies-bg-color-bg-secondary eddies-text-color-text-secondary eddies-z-[99999] eddies-my-1 eddies-flex eddies-max-h-80 eddies-w-48 eddies-flex-col eddies-overflow-hidden eddies-overflow-y-auto eddies-rounded eddies-border eddies-border-border eddies-p-1 eddies-animate-in eddies-fade-in eddies-slide-in-from-top-1 eddies-mt-2"
+          className="eddies-rounded-xl eddies-border-box eddies-shadow-custom eddies-bg-color-bg-secondary eddies-text-color-text-secondary eddies-z-[99999] eddies-my-1 eddies-flex eddies-max-h-80 eddies-w-48 eddies-flex-col eddies-overflow-hidden eddies-overflow-y-auto eddies-border eddies-border-border eddies-p-1 eddies-animate-in eddies-fade-in eddies-slide-in-from-top-1 eddies-mt-2"
         >
           {menuItems.map((item, index) => (
             <button
@@ -96,7 +96,7 @@ export default function NodeSelector({ editor }: { editor: EddiesEditor }) {
               }`}
               type="button"
             >
-              <div className="flex items-center space-x-2">
+              <div className="eddies-flex eddies-items-center eddies-space-x-2">
                 <div className="eddies-flex eddies-items-center eddies-space-x-2">
                   {" "}
                   <item.icon className="eddies-h-3 eddies-w-3" />

@@ -113,12 +113,14 @@ export default function BubbleMenu({
 
           return true;
         }}
-        className="eddies-m-0.5 eddies-mx-1 eddies-rounded-xl eddies-border-box eddies-flex eddies-flex-row eddies-items-center eddies-justify-center eddies-bg-color-bg-secondary eddies-shadow-custom eddies-gap-[2px] eddies-w-fit"
+        className="eddies-m-0.5 eddies-mx-1 eddies-rounded-xl eddies-border-box eddies-flex eddies-flex-row eddies-items-center eddies-justify-center eddies-bg-color-bg-secondary eddies-shadow-custom eddies-gap-[3px] eddies-w-fit"
       >
         <NodeSelector editor={editor} />
-        {items?.map((item, index) => (
-          <BubbleButton key={index} item={item} editor={editor} />
-        ))}
+        <div className="eddies-flex">
+          {items?.map((item, index) => (
+            <BubbleButton key={index} item={item} editor={editor} />
+          ))}
+        </div>
       </TiptapBubbleMenu>
     </>
   );

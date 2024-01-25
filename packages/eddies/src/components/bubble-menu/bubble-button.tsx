@@ -16,7 +16,7 @@ export default function BubbleButton({
   return (
     <button
       onClick={() => item.command(editor)}
-      className={`eddies-flex eddies-justify-center eddies-items-center eddies-p-2 eddies-text-color-text-secondary h-[30px] w-[30px] hover:eddies-bg-color-bg-secondary/40 eddies-rounded-md ${
+      className={`eddies-flex eddies-justify-center eddies-items-center eddies-p-2 eddies-text-color-text-secondary eddies-h-[30px] eddies-w-[30px] hover:eddies-bg-color-bg-secondary/40 eddies-rounded-md ${
         contextVariant
           ? "eddies-rounded-md eddies-border eddies-border-border"
           : ""
@@ -28,7 +28,7 @@ export default function BubbleButton({
       type="button"
       disabled={!editor.isEditable}
     >
-      <item.icon className={"eddies-h-4 eddies-w-4"} />
+      <item.icon className={"eddies-h-5.5 eddies-w-5.5"} />
     </button>
   );
 }

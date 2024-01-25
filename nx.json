@@ -14,11 +14,7 @@
     }
   },
   "release": {
-    "projects": [
-      "packages/*",
-      "packages/nx/native-packages/*",
-      "packages-legacy/*"
-    ],
+    "projects": ["packages/*"],
     "releaseTagPattern": "{version}",
     "changelog": {
       "workspaceChangelog": {
