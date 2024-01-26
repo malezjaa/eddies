@@ -54,30 +54,37 @@ export const CommandMenu = React.forwardRef(
       [command, editor, items]
     );
 
-    const commandListContainer = useRef<HTMLDivElement>(null);
-
-    useImperativeHandle(ref, () => ({
-      onKeyDown: ({ event }: { event: React.KeyboardEvent }) => {
-        event.preventDefault();
-        if (event.key === "ArrowUp") {
-          setSelectedIndex((selectedIndex + items.length - 1) % items.length);
-          return true;
+    useEffect(() => {
+      const navigationKeys = ["ArrowUp", "ArrowDown", "Enter"];
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (navigationKeys.includes(e.key)) {
+          e.preventDefault();
+          if (e.key === "ArrowUp") {
+            setSelectedIndex((selectedIndex + items.length - 1) % items.length);
+            return true;
+          }
+          if (e.key === "ArrowDown") {
+            setSelectedIndex((selectedIndex + 1) % items.length);
+            return true;
+          }
+          if (e.key === "Enter") {
+            selectItem(selectedIndex);
+            return true;
+          }
+          return false;
         }
-        if (event.key === "ArrowDown") {
-          setSelectedIndex((selectedIndex + 1) % items.length);
-          return true;
-        }
-        if (event.key === "Enter") {
-          console.log("enter");
-          selectItem(selectedIndex);
-          return true;
-        }
-      },
-    }));
+      };
+      document.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+      };
+    }, [items, selectedIndex, setSelectedIndex, selectItem]);
 
     useEffect(() => {
       setSelectedIndex(0);
     }, [items]);
+
+    const commandListContainer = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
       const container = commandListContainer?.current;

@@ -36,16 +36,10 @@ export type SlashCommandItem = {
 };
 
 export const SlashCommand = Extension.create<{
-  theme: "dark" | "light";
+  slashCommands?: SlashCommandItem[];
 }>({
   name: "slash-command",
   priority: 300,
-
-  addOptions() {
-    return {
-      theme: "dark",
-    };
-  },
 
   addProseMirrorPlugins() {
     return [
@@ -74,7 +68,7 @@ export const SlashCommand = Extension.create<{
           view.focus();
         },
         items: ({ query }: { query: string }) => {
-          return defaultSlashCommands.filter((item) => {
+          return (this.options.slashCommands ?? []).filter((item) => {
             if (typeof query === "string" && query.length > 0) {
               const search = query.toLowerCase();
               return (

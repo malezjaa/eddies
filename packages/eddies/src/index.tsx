@@ -14,3 +14,4 @@ export { EddiesEditor } from "@eddieseditor/core";
 export const BubbleMenu = BubbleMenuComponment;
 export const BubbleButton = BubbleMenuButton;
 export const NodeSelector = NodeSelectorComponent;
+export * from "./components/slash-command/default-items";

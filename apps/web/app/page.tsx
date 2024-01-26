@@ -5,6 +5,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { Emojis } from "@eddieseditor/emojis";
 import { CodeHighlight, useHighlighter } from "@eddieseditor/code-highlight";
+import { defaultSlashCommands } from "eddies";
+import { AlertCircle } from "lucide-react";
 
 export default function Page() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -57,11 +59,19 @@ export default function Page() {
                 shikiji: data,
               }),
             ]}
+            slashMenuCommands={[
+              ...defaultSlashCommands,
+              {
+                title: "Test",
+                command: () => console.log("test"),
+                description: "Do this do get amazing funcion",
+                icon: AlertCircle,
+              },
+            ]}
             theme={theme}
             limit={3000}
             placeholder={{
               enabled: true,
-              text: "Type something here...",
               nodes: {
                 heading: "Heading",
               },
@@ -191,7 +201,6 @@ export default function Page() {
                 },
               ],
             }}
-            onContentChange={(content) => console.log(content.getJSON())}
           />
         )}
       </div>

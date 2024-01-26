@@ -13,6 +13,7 @@ import CharacterCount from "@tiptap/extension-character-count";
 import { useEffect, useMemo, useRef } from "react";
 import { useEditor } from "./hooks/useEditor";
 import { SlashCommand } from "./components/slash-command/slash-command";
+import { defaultSlashCommands } from "./components/slash-command/default-items";
 
 export function Editor({
   initialValue,
@@ -24,6 +25,7 @@ export function Editor({
   limit = showCharacterCount ? 3000 : 0,
   menu = true,
   bubbleMenuItems = defaultBubbleMenuItems,
+  slashMenuCommands = defaultSlashCommands,
   isEditable = true,
   autofocus = false,
   onReady = () => {},
@@ -43,7 +45,9 @@ export function Editor({
       CharacterCount.configure({
         limit,
       }),
-      SlashCommand,
+      SlashCommand.configure({
+        slashCommands: slashMenuCommands,
+      }),
     ],
     initialValue,
     placeholder,
@@ -54,11 +58,7 @@ export function Editor({
     tiptapOptions,
   });
 
-  const bMenuItems = !Array.isArray(bubbleMenuItems)
-    ? bubbleMenuItems.includeDefault
-      ? [...defaultBubbleMenuItems, ...bubbleMenuItems.items!]
-      : bubbleMenuItems.items
-    : bubbleMenuItems;
+  const bMenuItems = bubbleMenuItems;
 
   if (!editor) return;
 
