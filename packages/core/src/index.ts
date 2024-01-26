@@ -37,7 +37,7 @@ export type EditorOptions = {
   /**
    * Extensions to add to the editor.
    */
-  extensions: Extensions;
+  extensions?: Extensions;
 
   /**
    * The placeholder text when the editor is empty.
@@ -146,7 +146,7 @@ export class EddiesEditor {
       },
       extensions: [
         ...eddiesDefaultExtensions,
-        ...options?.extensions,
+        ...options?.extensions!,
         ...configurableExtensions,
       ],
       ...options.tiptapOptions,
