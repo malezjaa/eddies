@@ -85,6 +85,10 @@ export default defineConfig({
             text: "Output",
             link: "/docs/guides/output",
           },
+          {
+            text: "Slash commands",
+            link: "/docs/guides/slash-commands",
+          },
         ],
       },
       {
@@ -113,6 +117,10 @@ export default defineConfig({
           {
             text: "PlaceholderOptions",
             link: "/docs/reference/placeholder-options",
+          },
+          {
+            text: "SlashCommandItem",
+            link: "/docs/reference/slash-command-item",
           },
         ],
       },
