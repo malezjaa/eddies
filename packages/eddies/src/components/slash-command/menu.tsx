@@ -6,7 +6,6 @@ import {
   ReactNode,
   useRef,
   useLayoutEffect,
-  useImperativeHandle,
 } from "react";
 
 interface CommandItemProps {
@@ -54,8 +53,20 @@ export const CommandMenu = React.forwardRef(
       [command, editor, items]
     );
 
+    React.useImperativeHandle(ref, () => ({
+      onKeyDown: ({ event }: { event: React.KeyboardEvent }) => {
+        if (event.key === "Enter") {
+          selectItem(selectedIndex);
+
+          return true;
+        }
+
+        return false;
+      },
+    }));
+
     useEffect(() => {
-      const navigationKeys = ["ArrowUp", "ArrowDown", "Enter"];
+      const navigationKeys = ["ArrowUp", "ArrowDown"];
       const onKeyDown = (e: KeyboardEvent) => {
         if (navigationKeys.includes(e.key)) {
           e.preventDefault();
@@ -65,10 +76,6 @@ export const CommandMenu = React.forwardRef(
           }
           if (e.key === "ArrowDown") {
             setSelectedIndex((selectedIndex + 1) % items.length);
-            return true;
-          }
-          if (e.key === "Enter") {
-            selectItem(selectedIndex);
             return true;
           }
           return false;
