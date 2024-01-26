@@ -56,6 +56,10 @@ export const CommandMenu = React.forwardRef(
     React.useImperativeHandle(ref, () => ({
       onKeyDown: ({ event }: { event: React.KeyboardEvent }) => {
         if (event.key === "Enter") {
+          if (!items.length || selectedIndex === -1) {
+            return false;
+          }
+
           selectItem(selectedIndex);
 
           return true;

@@ -84,15 +84,12 @@ export const SlashCommand = Extension.create<{
         render: () => {
           let component: any = null;
           let popup: any | null = null;
-          let scrollHandler: (() => void) | null = null;
 
           return {
             onStart: (props) => {
               component = new ReactRenderer(CommandMenu, {
                 props,
                 editor: props.editor,
-                // @ts-ignore
-                theme: this.options.theme,
               });
 
               // @ts-ignore
@@ -104,72 +101,28 @@ export const SlashCommand = Extension.create<{
                 trigger: "manual",
                 placement: "bottom-start",
                 showOnCreate: true,
-                theme: "slash-command",
-                popperOptions: {
-                  strategy: "fixed",
-                  modifiers: [
-                    {
-                      name: "flip",
-                      enabled: false,
-                    },
-                  ],
-                },
               });
-
-              scrollHandler = () => {
-                popup?.[0].setProps({
-                  getReferenceClientRect: props.clientRect,
-                });
-              };
-
-              props.editor.view.dom.parentElement?.addEventListener(
-                "scroll",
-                scrollHandler
-              );
-
-              popup[0].show();
             },
             onUpdate: (props) => {
               component?.updateProps(props);
-
-              let scrollHandler = () => {
-                popup?.[0].setProps({
-                  getReferenceClientRect: props.clientRect,
-                });
-              };
-
-              props.editor.view.dom.parentElement?.addEventListener(
-                "scroll",
-                scrollHandler
-              );
 
               popup &&
                 popup[0].setProps({
                   getReferenceClientRect: props.clientRect,
                 });
             },
-            onKeyDown(props) {
+            onKeyDown: (props) => {
               if (props.event.key === "Escape") {
                 popup?.[0].hide();
 
                 return true;
               }
 
-              if (!popup?.[0].state.isShown) {
-                popup?.[0].show();
-              }
-
               return component?.ref?.onKeyDown(props);
             },
-            onExit: (props) => {
-              popup?.[0].hide();
-              if (scrollHandler) {
-                const { view } = props.editor;
-                view.dom.parentElement?.removeEventListener(
-                  "scroll",
-                  scrollHandler
-                );
-              }
+            onExit: () => {
+              popup?.[0].destroy();
+
               component?.destroy();
             },
           };
