@@ -15,7 +15,7 @@
     "docs:build": "vitepress build apps/docs/src",
     "docs:preview": "vitepress preview apps/docs/src",
     "prepare": "husky install",
-    "nx-release": "nx release --projects='packages/**'"
+    "nx-release": "nx release"
   },
   "devDependencies": {
     "@nx/js": "^17.2.8",
