@@ -263,6 +263,9 @@ importers:
       '@tiptap/starter-kit':
         specifier: ^2.1.13
         version: 2.1.13(@tiptap/pm@2.1.13)
+      '@tiptap/suggestion':
+        specifier: ^2.1.16
+        version: 2.1.16(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -278,6 +281,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.0)
+      tippy.js:
+        specifier: ^6.3.7
+        version: 6.3.7
       tiptap-markdown:
         specifier: ^0.8.8
         version: 0.8.8(@tiptap/core@2.1.13)
@@ -3374,6 +3380,16 @@ packages:
       '@tiptap/extension-text': 2.1.13(@tiptap/core@2.1.13)
     transitivePeerDependencies:
       - '@tiptap/pm'
+    dev: false
+
+  /@tiptap/suggestion@2.1.16(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13):
+    resolution: {integrity: sha512-3kYgpT1oTSgjLesAU3rV3lkcqVRV9K520/tA1IhXAC+UsofUEkflXftoMnaJjwgEfKM3n87uJlyPFEUBiC7xYg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
+      '@tiptap/pm': 2.1.13
     dev: false
 
   /@tootallnate/quickjs-emscripten@0.23.0:

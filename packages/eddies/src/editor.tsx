@@ -12,6 +12,7 @@ import { EddiesEditor, EditorOptions } from "@eddieseditor/core";
 import CharacterCount from "@tiptap/extension-character-count";
 import { useEffect, useMemo, useRef } from "react";
 import { useEditor } from "./hooks/useEditor";
+import { SlashCommand } from "./components/slash-command/slash-command";
 
 export function Editor({
   initialValue,
@@ -25,7 +26,7 @@ export function Editor({
   bubbleMenuItems = defaultBubbleMenuItems,
   isEditable = true,
   autofocus = false,
-  onReady = () => console.log(""),
+  onReady = () => {},
   tiptapOptions = {
     editorProps: {
       attributes: {
@@ -33,7 +34,7 @@ export function Editor({
       },
     },
   },
-  onContentChange = (editor: EddiesEditor) => console.log(""),
+  onContentChange = (editor: EddiesEditor) => {},
 }: EditorProps) {
   const editor = useEditor({
     extensions: [
@@ -42,6 +43,7 @@ export function Editor({
       CharacterCount.configure({
         limit,
       }),
+      SlashCommand,
     ],
     initialValue,
     placeholder,
@@ -68,7 +70,7 @@ export function Editor({
         }}
         className={`${
           theme === "dark" ? "dark-theme" : ""
-        } eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg eddies-rounded-lg eddies-border eddies-border-border eddies-shadow-lg ${className}`}
+        } eddies-editor  eddies-relative eddies-min-h-[500px] eddies-bg-color-bg eddies-w-full eddies-max-w-screen-lg eddies-rounded-lg eddies-border eddies-border-border eddies-shadow-lg ${className}`}
       >
         {editor && <BubbleMenu editor={editor} items={bMenuItems} />}
         {editor && <DragMenu editor={editor} />}

@@ -11,6 +11,7 @@ import {
   AlignLeft,
   AlignCenter,
   AlignRight,
+  LucideIcon,
 } from "lucide-react";
 import NodeSelector from "../node-selector/node-selector";
 import { EddiesEditor } from "@eddieseditor/core";
@@ -20,7 +21,7 @@ export interface BubbleMenuItem {
   /**
    * Icon from lucide-react
    */
-  icon: typeof BoldIcon;
+  icon: LucideIcon;
   /**
    * Function that boolean based on whether the command is active
    * @param editor

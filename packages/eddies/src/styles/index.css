@@ -14,6 +14,11 @@
   --eddies-stone-800: rgb(41 37 36);
   --eddies-stone-900: rgb(28 25 23);
 
+  --eddies-bg-color: white;
+  --eddies-text-color: black;
+  --eddies-bg-secondary-color: white;
+  --eddies-text-secondary-color: rgb(31, 31, 31);
+
   --eddies-border: rgba(236, 236, 238, 0.856);
   --eddies-muted: #d8d8d8;
   --eddies-hover: #ecebeb;
@@ -33,6 +38,11 @@
   --eddies-stone-800: rgb(232 234 235);
   --eddies-stone-900: rgb(240, 240, 241);
 
+  --eddies-bg-color: #1b1b1b;
+  --eddies-text-color: #e1f7f1;
+  --eddies-bg-secondary-color: rgb(35, 35, 35);
+  --eddies-text-secondary-color: rgb(185, 182, 181);
+
   --eddies-border: rgba(226, 232, 255, 0.07);
   --eddies-muted: rgb(26, 26, 26);
   --eddies-hover: rgb(46, 45, 45);
@@ -40,32 +50,12 @@
   --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
 }
 
-@layer base {
-  :root {
-    --eddies-bg-color: white;
-    --eddies-text-color: black;
-    --eddies-bg-secondary-color: white;
-    --eddies-text-secondary-color: rgb(31, 31, 31);
+.eddies-editor ::-webkit-scrollbar {
+  @apply eddies-w-1 eddies-h-1 eddies-bg-neutral-500/20;
+}
 
-    --eddies-border: rgba(226, 232, 255, 0.07);
-    --eddies-muted: rgb(26, 26, 26);
-    --eddies-hover: rgb(46, 45, 45);
-
-    --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
-  }
-
-  .dark-theme {
-    --eddies-bg-color: #1b1b1b;
-    --eddies-text-color: #e1f7f1;
-    --eddies-bg-secondary-color: rgb(35, 35, 35);
-    --eddies-text-secondary-color: rgb(185, 182, 181);
-
-    --eddies-border: rgba(226, 232, 255, 0.07);
-    --eddies-muted: rgb(26, 26, 26);
-    --eddies-hover: rgb(46, 45, 45);
-
-    --edies-box-shadow: rgb(15, 15, 15) 0px 4px 12px;
-  }
+.eddies-editor ::-webkit-scrollbar-thumb {
+  @apply eddies-bg-neutral-500/50 eddies-rounded-full;
 }
 
 .tippy-box {
