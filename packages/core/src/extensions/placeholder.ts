@@ -78,7 +78,8 @@ export const Placeholder = Extension.create<PlaceholderOptions>({
 
                 let nodeName = node.type.name as keyof PlaceholderNodes;
                 let name =
-                  this?.options?.nodes?.[nodeName] || this.options.text;
+                  this?.options?.nodes?.[nodeName] ||
+                  (this.options.text ?? "Type '/' for commands");
 
                 const decoration = Decoration.node(pos, pos + node.nodeSize, {
                   class: classes.join(" "),
