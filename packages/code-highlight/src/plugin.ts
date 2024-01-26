@@ -137,14 +137,6 @@ export function HighlightPlugin(
               );
             }))
         ) {
-          console.log(
-            getDecorations({
-              doc: transaction.doc,
-              name: options.name,
-              highlighter: options.shikiji,
-              options,
-            })
-          );
           return getDecorations({
             doc: transaction.doc,
             name: options.name,
