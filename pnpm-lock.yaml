@@ -219,7 +219,7 @@ importers:
   packages/eddies:
     dependencies:
       '@eddieseditor/core':
-        specifier: 1.0.10
+        specifier: 1.0.11-0
         version: link:../core
       '@radix-ui/react-popover':
         specifier: ^1.0.7
