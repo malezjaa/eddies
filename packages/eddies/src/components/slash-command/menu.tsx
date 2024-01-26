@@ -3,16 +3,11 @@ import {
   useState,
   useEffect,
   useCallback,
-  ReactNode,
   useRef,
   useLayoutEffect,
 } from "react";
-
-interface CommandItemProps {
-  title: string;
-  description: string;
-  icon: ReactNode;
-}
+import { SlashCommandItem } from "./slash-command";
+//https://github.com/steven-tey/novel from steven-tey helped a lot with this implmentation
 
 export const updateScrollView = (container: HTMLElement, item: HTMLElement) => {
   const containerHeight = container.offsetHeight;
@@ -35,8 +30,8 @@ export const CommandMenu = React.forwardRef(
       command,
       editor,
     }: {
-      items: CommandItemProps[];
-      command: (item: CommandItemProps) => void;
+      items: SlashCommandItem[];
+      command: (item: SlashCommandItem) => void;
       editor: any;
     },
     ref
@@ -70,20 +65,18 @@ export const CommandMenu = React.forwardRef(
     }));
 
     useEffect(() => {
-      const navigationKeys = ["ArrowUp", "ArrowDown"];
       const onKeyDown = (e: KeyboardEvent) => {
-        if (navigationKeys.includes(e.key)) {
+        if (e.key === "ArrowUp") {
           e.preventDefault();
-          if (e.key === "ArrowUp") {
-            setSelectedIndex((selectedIndex + items.length - 1) % items.length);
-            return true;
-          }
-          if (e.key === "ArrowDown") {
-            setSelectedIndex((selectedIndex + 1) % items.length);
-            return true;
-          }
-          return false;
+          setSelectedIndex((selectedIndex + items.length - 1) % items.length);
+          return true;
         }
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          setSelectedIndex((selectedIndex + 1) % items.length);
+          return true;
+        }
+        return false;
       };
       document.addEventListener("keydown", onKeyDown);
       return () => {
@@ -111,7 +104,7 @@ export const CommandMenu = React.forwardRef(
         ref={commandListContainer}
         className="eddies-z-50 eddies-h-auto eddies-max-h-[330px] eddies-w-72 eddies-overflow-y-auto eddies-rounded-md eddies-bg-color-bg eddies-px-1 eddies-py-2 eddies-transition-all"
       >
-        {items.map((item: CommandItemProps, index: number) => {
+        {items.map((item: SlashCommandItem, index: number) => {
           return (
             <button
               className={`eddies-flex eddies-w-full eddies-items-center eddies-space-x-2 eddies-rounded-md eddies-px-2 eddies-py-1 eddies-text-left eddies-text-sm eddies-text-color-text hover:eddies-bg-color-bg-secondary ${
