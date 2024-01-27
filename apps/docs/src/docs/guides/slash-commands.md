@@ -26,12 +26,16 @@ export default function Page() {
       slashMenuCommands={[
         ...defaultSlashCommands,
         {
-          title: "Heading 4",
-          command: (editor) =>
-            editor.chain().focus().setNode("heading", { level: 3 }).run(),
-          description: "Really small heading",
-          icon: AlertCircle,
-        },
+          title: "Custom group",
+          commands: [
+            {
+              title: "Image",
+              command: (editor) => /** Add an image */,
+              description: "Add image",
+              icon: AlertCircle,
+            }
+          ]
+        }
       ]}
     />
   );

@@ -8,7 +8,10 @@ import { EditorProps as TiptapEditorProps } from "@tiptap/pm/view";
 import { BubbleMenuItem } from "./components/bubble-menu/bubble-menu";
 import { Editor as CoreEditor } from "@tiptap/react";
 import { EditorOptions } from "@eddieseditor/core";
-import { SlashCommandItem } from "./components/slash-command/slash-command";
+import {
+  SlashCommandGroup,
+  SlashCommandItem,
+} from "./components/slash-command/slash-command";
 
 export type EditorProps = {
   /**
@@ -44,5 +47,5 @@ export type EditorProps = {
   /**
    * Slash menu commands
    */
-  slashMenuCommands?: SlashCommandItem[];
+  slashMenuCommands?: SlashCommandGroup[];
 } & EditorOptions;

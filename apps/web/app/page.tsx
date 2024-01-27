@@ -59,15 +59,7 @@ export default function Page() {
                 shikiji: data,
               }),
             ]}
-            slashMenuCommands={[
-              ...defaultSlashCommands,
-              {
-                title: "Test",
-                command: () => console.log("test"),
-                description: "Do this do get amazing funcion",
-                icon: AlertCircle,
-              },
-            ]}
+            slashMenuCommands={[...defaultSlashCommands]}
             theme={theme}
             limit={3000}
             placeholder={{

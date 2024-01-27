@@ -35,8 +35,20 @@ export type SlashCommandItem = {
   command: (editor: Editor) => void;
 };
 
+export type SlashCommandGroup = {
+  /**
+   * Title of the slash command group
+   */
+  title: string;
+
+  /**
+   * Slash commands
+   */
+  commands: SlashCommandItem[];
+};
+
 export const SlashCommand = Extension.create<{
-  slashCommands?: SlashCommandItem[];
+  slashCommands?: SlashCommandGroup[];
 }>({
   name: "slash-command",
   priority: 300,
@@ -68,18 +80,22 @@ export const SlashCommand = Extension.create<{
           view.focus();
         },
         items: ({ query }: { query: string }) => {
-          return (this.options.slashCommands ?? []).filter((item) => {
-            if (typeof query === "string" && query.length > 0) {
-              const search = query.toLowerCase();
-              return (
-                item.title.toLowerCase().includes(search) ||
-                item.description?.toLowerCase().includes(search) ||
-                (item.alias &&
-                  item.alias.some((term: string) => term.includes(search)))
-              );
-            }
-            return true;
-          });
+          const str = query.toLowerCase();
+          const items: SlashCommandGroup[] = [];
+
+          const groups: SlashCommandGroup[] = this.options
+            .slashCommands!.map((group) => ({
+              ...group,
+              commands: group.commands.filter(
+                (command) =>
+                  command.title.toLowerCase().includes(str) ||
+                  command.description?.toLowerCase().includes(str) ||
+                  command.alias?.some((alias) => alias.includes(str))
+              ),
+            }))
+            .filter((group) => group.commands.length > 0);
+
+          return groups;
         },
         render: () => {
           let component: any = null;
