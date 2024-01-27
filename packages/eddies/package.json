@@ -1,6 +1,6 @@
 {
   "name": "eddies",
-  "version": "1.0.11-0",
+  "version": "1.0.11",
   "author": "malezjaa <https://www.github.com/malezjaa>",
   "description": "Fully featured, modern and extensible editor",
   "homepage": "https://malezjaa.github.io/eddies/",
@@ -48,7 +48,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@eddieseditor/core": "1.0.11-0",
+    "@eddieseditor/core": "1.0.11",
     "@radix-ui/react-popover": "^1.0.7",
     "@tiptap/core": "^2.1.13",
     "@tiptap/extension-character-count": "^2.1.13",
