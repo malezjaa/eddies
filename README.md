@@ -5,8 +5,7 @@
 	<h1 align="center"><b>Eddies</b></h1>
 	<p align="center">
 <a href="https://www.npmjs.com/package/eddies" target="_blank"><img src="https://img.shields.io/npm/v/eddies.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/package/eddies" target="_blank"><img src="https://img.shields.io/npm/l/eddies.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/package/eddies" target="_blank"><img src="https://img.shields.io/npm/dm/eddies.svg" alt="NPM Downloads" /></a>
+<a href="https://www.npmjs.com/package/eddies" target="_blank"><img src="https://img.shields.io/npm/dt/eddies.svg" alt="NPM Downloads" /></a>
 <a href="https://www.npmjs.com/package/eddies" target="_blank"><img src="https://img.shields.io/github/issues-closed/malezjaa/eddies.svg" alt="Issues closed" /></a>
 <a href="https://github.com/malezjaa/eddies/graphs/commit-activity" target="_blank"><img src="https://img.shields.io/github/commit-activity/m/malezjaa/eddies.svg" alt="Commit activity" /></a>
 <a href="https://github.com/malezjaa/eddies/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/malezjaa/eddies.svg" alt="Stars" /></a>
