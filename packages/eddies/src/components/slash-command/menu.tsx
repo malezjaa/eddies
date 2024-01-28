@@ -138,7 +138,7 @@ export const CommandMenu = React.forwardRef(
       <div
         id="slash-command"
         ref={commandListContainer}
-        className="eddies-z-50 eddies-h-auto eddies-max-h-[330px] eddies-w-72 eddies-overflow-y-auto eddies-rounded-md eddies-bg-color-bg-secondary eddies-px-2 eddies-py-3 eddies-transition-all"
+        className="eddies-border eddies-border-border eddies-shadow-custom eddies-z-50 eddies-h-auto eddies-max-h-[330px] eddies-w-72 eddies-overflow-y-auto eddies-rounded-[.375rem] eddies-bg-color-bg-secondary eddies-px-2 eddies-py-3 eddies-transition-all"
       >
         {items.map((group: SlashCommandGroup, mainIndex: number) => {
           return (

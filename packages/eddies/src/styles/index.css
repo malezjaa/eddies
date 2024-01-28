@@ -16,7 +16,7 @@
 
   --eddies-bg-color: white;
   --eddies-text-color: black;
-  --eddies-bg-secondary-color: white;
+  --eddies-bg-secondary-color: rgb(245 245 245);
   --eddies-text-secondary-color: rgb(31, 31, 31);
 
   --eddies-border: rgba(236, 236, 238, 0.856);
@@ -56,13 +56,6 @@
 
 .eddies-editor ::-webkit-scrollbar-thumb {
   @apply eddies-bg-neutral-500/50 eddies-rounded-full;
-}
-
-.tippy-box {
-  border-radius: 0.375rem;
-  box-shadow: var(--edies-box-shadow);
-  background-color: var(--eddies-bg-color-secondary);
-  border: 1px solid var(--eddies-border);
 }
 
 .ProseMirror,

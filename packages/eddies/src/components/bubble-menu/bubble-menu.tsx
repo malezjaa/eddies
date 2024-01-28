@@ -114,7 +114,7 @@ export default function BubbleMenu({
 
           return true;
         }}
-        className="eddies-m-0.5 eddies-mx-1 eddies-rounded-xl eddies-border-box eddies-flex eddies-flex-row eddies-items-center eddies-justify-center eddies-bg-color-bg-secondary eddies-shadow-custom eddies-gap-[3px] eddies-w-fit"
+        className="eddies-border eddies-border-border eddies-shadow-custom eddies-p-0.5 eddies-px-1 eddies-rounded-[.375rem] eddies-border-box eddies-flex eddies-bg-color-bg-secondary eddies-gap-[3px] eddies-w-fit"
       >
         <NodeSelector editor={editor} />
         <div className="eddies-flex">
