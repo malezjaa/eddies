@@ -17,7 +17,7 @@ hero:
       link: /docs/quick-start
     - theme: alt
       text: View on GitHub
-      link: https://github.com/eddiesjs/eddies
+      link: https://github.com/malezjaa/eddies
 
 features:
   - icon: 🛠️
