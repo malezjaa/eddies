@@ -1,6 +1,6 @@
 {
   "name": "@eddieseditor/code-highlight",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "author": "malezjaa <https://www.github.com/malezjaa>",
   "description": "Code highlight plugin for Eddies Editor using Shikiji",
   "homepage": "https://malezjaa.github.io/eddies/",
