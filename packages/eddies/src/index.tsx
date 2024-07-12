@@ -3,6 +3,9 @@
 import BubbleMenuComponment from "./components/bubble-menu/bubble-menu";
 import BubbleMenuButton from "./components/bubble-menu/bubble-menu";
 import NodeSelectorComponent from "./components/node-selector/node-selector";
+import { defaultExtensions } from "./extensions";
+import { defaultCoreExtensions } from "@eddieseditor/core";
+
 export * from "./editor";
 export * from "./components/bubble-menu/bubble-menu";
 export * from "./components/bubble-menu/bubble-button";
@@ -15,3 +18,9 @@ export const BubbleMenu = BubbleMenuComponment;
 export const BubbleButton = BubbleMenuButton;
 export const NodeSelector = NodeSelectorComponent;
 export * from "./components/slash-command/default-items";
+export * from "./utils";
+
+export const eddiesDefaultExtensions = [
+  ...defaultExtensions,
+  ...defaultCoreExtensions,
+];

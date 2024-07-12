@@ -1,6 +1,7 @@
 import { EditorView } from "@tiptap/pm/view";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { generateHTML } from "@tiptap/core";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -46,3 +47,5 @@ export function nodePosAtDOM(node: Element, view: EditorView) {
     top: boundingRect.top + 1,
   })?.inside;
 }
+
+export { generateHTML }
