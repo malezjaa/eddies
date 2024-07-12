@@ -88,6 +88,7 @@ export class EddiesEditor {
       }),
       keyboardShortcuts,
     ];
+
     if (options.placeholder?.enabled) {
       configurableExtensions.push(placeholderExtension);
     }
@@ -97,24 +98,24 @@ export class EddiesEditor {
         options.initialValue !== null
           ? (options.initialValue as JSONContent)
           : {
-              type: "doc",
-              content: [
-                {
-                  type: "heading",
-                  id: UniqueID.options.generateID(),
-                  attrs: {
-                    textAlign: "left",
-                    level: 1,
-                  },
-                  content: [
-                    {
-                      type: "text",
-                      text: "Hello world 🌍",
-                    },
-                  ],
+            type: "doc",
+            content: [
+              {
+                type: "heading",
+                id: UniqueID.options.generateID(),
+                attrs: {
+                  textAlign: "left",
+                  level: 1,
                 },
-              ],
-            },
+                content: [
+                  {
+                    type: "text",
+                    text: "Hello world 🌍",
+                  },
+                ],
+              },
+            ],
+          },
       onUpdate: (e) => {
         options.tiptapOptions?.onUpdate?.(e);
         options.onContentChange?.(this);
@@ -222,3 +223,5 @@ export class EddiesEditor {
       this.tiptap.state.doc.toJSON() as JSONContent
     );
 }
+
+export { eddiesDefaultExtensions as defaultCoreExtensions };

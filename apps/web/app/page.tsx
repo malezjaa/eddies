@@ -1,6 +1,6 @@
 "use client";
 
-import { Editor } from "eddies";
+import { eddiesDefaultExtensions, Editor, generateHTML } from "eddies";
 import { useState } from "react";
 import Link from "next/link";
 import { Emojis } from "@eddieseditor/emojis";
@@ -14,6 +14,20 @@ export default function Page() {
     langs: ["html", "css", "js", "ts", "jsx", "tsx", "json"],
     themes: ["vitesse-dark"],
   });
+
+  const exts = [
+    Emojis.configure({
+      mode: "override",
+      emojiReplacements: [{ find: /:skrull: $/, replace: "💀 " }],
+    }),
+    CodeHighlight.configure({
+      defaultTheme: "vitesse-dark",
+      HTMLAttributes: {
+        class: "eddies-code-block",
+      },
+      shikiji: data,
+    }),
+  ];
 
   return (
     <div className="flex min-h-screen flex-col items-center sm:px-5 sm:pt-[calc(10vh)] bg-[#353535]">
@@ -46,19 +60,7 @@ export default function Page() {
         {!isLoading && (
           <Editor
             showCharacterCount={true}
-            extensions={[
-              Emojis.configure({
-                mode: "override",
-                emojiReplacements: [{ find: /:skrull: $/, replace: "💀 " }],
-              }),
-              CodeHighlight.configure({
-                defaultTheme: "vitesse-dark",
-                HTMLAttributes: {
-                  class: "eddies-code-block",
-                },
-                shikiji: data,
-              }),
-            ]}
+            extensions={exts}
             slashMenuCommands={[...defaultSlashCommands]}
             theme={theme}
             limit={3000}
@@ -67,6 +69,14 @@ export default function Page() {
               nodes: {
                 heading: "Heading",
               },
+            }}
+            onContentChange={(editor) => {
+              const json = editor.getJSON();
+
+              console.log(editor.getHTML());
+              console.log(
+                generateHTML(json, [...exts, ...eddiesDefaultExtensions])
+              );
             }}
             initialValue={{
               type: "doc",

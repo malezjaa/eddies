@@ -1,6 +1,7 @@
 import {
   Extensions,
   Content,
+  JSONContent,
   Editor as TiptapEditor,
   FocusPosition,
 } from "@tiptap/react";
@@ -49,3 +50,5 @@ export type EditorProps = {
    */
   slashMenuCommands?: SlashCommandGroup[];
 } & EditorOptions;
+
+export type { Extensions, JSONContent, Content }
